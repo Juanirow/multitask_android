@@ -148,4 +148,6 @@ class LoginPresenterTest {
         verify(this.mView).hideProgressDialog()
         verify(this.mView).closeActivityWithOkResult()
     }
+
+
 }
