@@ -18,4 +18,5 @@ interface ILoginView {
     fun showServerError()
     fun showWrongCredentialsError()
     fun closeActivityWithOkResult()
+    fun launchCreateAccountActivity()
 }

@@ -13,6 +13,9 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
 
     private val PASSWORD_MIN_LEN = 6
 
+    fun onCreateAccountButton() {
+    }
+
     fun onLoginBtnClick() {
         val email = mView.getEmail()
         if(!validateEmail(email)) return
@@ -64,4 +67,5 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
         this.mView.hideProgressDialog()
         this.mView.showWrongCredentialsError()
     }
+
 }

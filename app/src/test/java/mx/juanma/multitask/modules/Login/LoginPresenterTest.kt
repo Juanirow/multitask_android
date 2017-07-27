@@ -149,5 +149,9 @@ class LoginPresenterTest {
         verify(this.mView).closeActivityWithOkResult()
     }
 
-
+    @Test
+    fun shouldLaunchCreateAccountWhenUsersClickCreateAccountButton() {
+        this.mPresenter.onCreateAccountButton()
+        verify(this.mView).launchCreateAccountActivity()
+    }
 }
