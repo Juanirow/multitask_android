@@ -6,5 +6,5 @@ package mx.juanma.multitask.modules.Login
  * Nakva
  * linanjm90@gmail.com
  */
-class LoginPresenter {
+class LoginPresenter(val mView: ILoginView) {
 }
