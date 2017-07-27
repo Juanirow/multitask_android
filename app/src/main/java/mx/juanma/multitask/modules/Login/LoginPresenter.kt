@@ -8,24 +8,29 @@ import mx.juanma.multitask.helpers.EmailValidator
  * Nakva
  * linanjm90@gmail.com
  */
-class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor) {
+class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
+        ILoginInteractor.Callback {
+
+    private val PASSWORD_MIN_LEN = 6
 
     fun onLoginBtnClick() {
         val email = mView.getEmail()
         if(!validateEmail(email)) return
         val password = mView.getPassword()
         if(!validatePassword(password)) return
-
+        mView.showProgressDialog()
+        mInteractor.signUp(email!!, password!!, this)
     }
-
-    fun signUp(email: String, password: String, capture: ILoginInteractor.Callback) {}
 
     private fun validatePassword(password: String?): Boolean {
         if(password == null || password.isEmpty()) {
             this.mView.showPasswordRequiredError()
             return false
         }
-
+        if(password.length < PASSWORD_MIN_LEN) {
+            this.mView.showPasswordWrongLengthError()
+            return false
+        }
         return true
     }
 
@@ -41,4 +46,16 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor) {
         return true
     }
 
+    /**
+     * Interactor CALLBACK
+     */
+
+    override fun onLoginSuccessful() {
+    }
+
+    override fun onLoginServerError() {
+    }
+
+    override fun onWrongCredentials() {
+    }
 }

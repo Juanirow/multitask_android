@@ -92,7 +92,7 @@ class LoginPresenterTest {
         verify(this.mView).getPassword()
         verify(this.mView).showProgressDialog()
 
-        this.mPresenter.signUp(
+        verify(this.mInteractor).signUp(
                 Mockito.eq("nailah@mail.com"),
                 Mockito.eq("123456"),
                 captor.capture())
@@ -114,7 +114,7 @@ class LoginPresenterTest {
         verify(this.mView).getPassword()
         verify(this.mView).showProgressDialog()
 
-        this.mPresenter.signUp(
+        verify(this.mInteractor).signUp(
                 Mockito.eq("nailah@mail.com"),
                 Mockito.eq("123456"),
                 captor.capture())
@@ -136,12 +136,12 @@ class LoginPresenterTest {
         verify(this.mView).getPassword()
         verify(this.mView).showProgressDialog()
 
-        this.mPresenter.signUp(
+        verify(this.mInteractor).signUp(
                 Mockito.eq("nailah@mail.com"),
                 Mockito.eq("123456"),
                 captor.capture())
 
-        captor.value.onWrongCredentials()
+        captor.value.onLoginSuccessful()
         verify(this.mView).hideProgressDialog()
         verify(this.mView).closeActivityWithOkResult()
     }

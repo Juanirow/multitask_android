@@ -14,4 +14,6 @@ interface ILoginInteractor {
         fun onWrongCredentials()
 
     }
+
+    fun  signUp(email: String, password: String, listener: ILoginInteractor.Callback)
 }
