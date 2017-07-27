@@ -1,4 +1,4 @@
-package mx.juanma.multitask.Login
+package mx.juanma.multitask.modules.Login
 
 
 /**
@@ -6,5 +6,5 @@ package mx.juanma.multitask.Login
  * Nakva
  * linanjm90@gmail.com
  */
-interface ILoginView {
+class LoginPresenter {
 }
