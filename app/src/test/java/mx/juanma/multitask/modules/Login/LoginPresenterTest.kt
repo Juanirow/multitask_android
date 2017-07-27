@@ -80,6 +80,7 @@ class LoginPresenterTest {
         verify(this.mView).showPasswordWrongLengthError()
     }
 
+
     @Test
     fun shouldShowErrorWhenTheServerReturnsError() {
         val captor = ArgumentCaptor.forClass(ILoginInteractor.Callback::class.java)
@@ -93,8 +94,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                Mockito.eq("nailah@mail.com"),
-                Mockito.eq("123456"),
+                "nailah@mail.com",
+                "123456",
                 captor.capture())
 
         captor.value.onLoginServerError()
@@ -115,8 +116,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                Mockito.eq("nailah@mail.com"),
-                Mockito.eq("123456"),
+                "nailah@mail.com",
+                "123456",
                 captor.capture())
 
         captor.value.onWrongCredentials()
@@ -137,8 +138,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                Mockito.eq("nailah@mail.com"),
-                Mockito.eq("123456"),
+                "nailah@mail.com",
+                "123456",
                 captor.capture())
 
         captor.value.onLoginSuccessful()

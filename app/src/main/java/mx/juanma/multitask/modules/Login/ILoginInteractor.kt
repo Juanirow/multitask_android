@@ -15,5 +15,5 @@ interface ILoginInteractor {
 
     }
 
-    fun  signUp(email: String, password: String, listener: ILoginInteractor.Callback)
+    fun  signUp(email: String, password: String, listener: ILoginInteractor.Callback?)
 }
