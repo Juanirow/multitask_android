@@ -51,6 +51,8 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
      */
 
     override fun onLoginSuccessful() {
+        this.mView.hideProgressDialog()
+        this.mView.closeActivityWithOkResult()
     }
 
     override fun onLoginServerError() {

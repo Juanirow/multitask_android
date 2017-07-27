@@ -4,6 +4,8 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
+import org.mockito.Matchers.any
+import org.mockito.Matchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
@@ -94,8 +96,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                "nailah@mail.com",
-                "123456",
+                anyString(),
+                anyString(),
                 captor.capture())
 
         captor.value.onLoginServerError()
@@ -116,8 +118,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                "nailah@mail.com",
-                "123456",
+                anyString(),
+                anyString(),
                 captor.capture())
 
         captor.value.onWrongCredentials()
@@ -138,8 +140,8 @@ class LoginPresenterTest {
         verify(this.mView).showProgressDialog()
 
         verify(this.mInteractor).signUp(
-                "nailah@mail.com",
-                "123456",
+                anyString(),
+                anyString(),
                 captor.capture())
 
         captor.value.onLoginSuccessful()
