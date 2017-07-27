@@ -1,5 +1,7 @@
 package mx.juanma.multitask.modules.Login
 
+import mx.juanma.multitask.helpers.EmailValidator
+
 
 /**
  * Created by Juancho on 27/07/17.
@@ -18,6 +20,10 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor) {
     private fun validateEmail(email: String?): Boolean {
         if(email == null || email.isEmpty()) {
             this.mView.showEmailRequiredError()
+            return false
+        }
+        if(!EmailValidator.isValid(email)) {
+            this.mView.showEmailInvalid()
             return false
         }
         return true
