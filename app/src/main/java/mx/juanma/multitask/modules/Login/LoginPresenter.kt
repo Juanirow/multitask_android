@@ -56,6 +56,8 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
     }
 
     override fun onLoginServerError() {
+        this.mView.hideProgressDialog()
+        this.mView.showServerError()
     }
 
     override fun onWrongCredentials() {
