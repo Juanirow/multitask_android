@@ -14,6 +14,7 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
     private val PASSWORD_MIN_LEN = 6
 
     fun onCreateAccountButton() {
+        this.mView.launchCreateAccountActivity()
     }
 
     fun onLoginBtnClick() {
