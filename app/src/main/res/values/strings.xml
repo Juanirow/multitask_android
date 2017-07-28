@@ -11,4 +11,6 @@
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
     <string name="error_email_required">The email can not be empty</string>
+    <string name="error_email_invalid">The email is invalid</string>
+    <string name="error_password_required">The Password can not be empty</string>
 </resources>
