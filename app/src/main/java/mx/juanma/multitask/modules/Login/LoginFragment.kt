@@ -58,6 +58,7 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun showEmailInvalid() {
+        ViewHelper.setTextInputLayoutError(R.string.error_email_invalid, labelEmail, this.activity)
     }
 
     override fun showPasswordRequiredError() {
