@@ -62,7 +62,7 @@ class LoginActivityTest {
 
     @Test
     fun shouldSetErrorWhenPasswordWrongLength() {
-        val error = mRule.activity.resources.getString(R.string.error_password_required)
+        val error = mRule.activity.resources.getString(R.string.error_password_wrong_length)
         onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.inputPassword)).perform(typeText("12345"))
