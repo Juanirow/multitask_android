@@ -88,8 +88,8 @@ object DialogCreator {
      * @param onDismissListener listener to detect the dismiss action of the alert
      */
     fun showError(context: Context, messageId: Int,
-                  onCLickListener: DialogInterface.OnClickListener?,
-                  onDismissListener: DialogInterface.OnDismissListener?) {
+                  onCLickListener: DialogInterface.OnClickListener? = null,
+                  onDismissListener: DialogInterface.OnDismissListener? = null) {
         showDialogMessageNoIcon(context, R.string.error,
                 messageId, onCLickListener, onDismissListener)
     }

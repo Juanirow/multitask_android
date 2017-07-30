@@ -1,6 +1,7 @@
 package mx.juanma.multitask.modules.Login
 
 import android.app.Fragment
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_login.*
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
+import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.helpers.ViewHelper
 
 
@@ -19,6 +21,7 @@ import mx.juanma.multitask.helpers.ViewHelper
 class LoginFragment: Fragment(), ILoginView {
 
     var mPresenter: LoginPresenter? = null
+    var mProgressDialog: ProgressDialog? = null
 
     companion object {
         @JvmStatic fun getInstance(): LoginFragment {
@@ -72,12 +75,19 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun showProgressDialog() {
+        if(this.mProgressDialog == null) {
+            this.mProgressDialog = DialogCreator.createProgressDialog(this.activity,
+                    R.string.validating_credentials, R.string.validating_credentials)
+        }
+        this.mProgressDialog?.show()
     }
 
     override fun hideProgressDialog() {
+        this.mProgressDialog?.dismiss()
     }
 
     override fun showServerError() {
+        DialogCreator.showError(this.activity, R.string.error_server_generic)
     }
 
     override fun showWrongCredentialsError() {

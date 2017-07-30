@@ -5,12 +5,16 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.RootMatchers.isDialog
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import mx.juanma.multitask.CustomMatcher
 import mx.juanma.multitask.R
 import mx.juanma.multitask.modules.Login.LoginActivity
+import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.endsWith
+import org.hamcrest.core.StringEndsWith.endsWith
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -71,4 +75,37 @@ class LoginActivityTest {
         onView(withId(R.id.labelPassword)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
+    @Test
+    fun shouldShowServerError() {
+        val error = mRule.activity.resources.getString(R.string.error_server_generic)
+        onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.inputPassword)).perform(typeText("123456"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withText(error)).check(matches(allOf(withText(error),
+                        isDisplayed())))
+    }
+
+    @Test
+    fun shouldShowWrongCredentials() {
+        val error = mRule.activity.resources.getString(R.string.error_wrong_credentials)
+        onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.inputPassword)).perform(typeText("223456"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withText(error)).check(matches(allOf(withText(error),
+                isDisplayed())))
+    }
+
+    @Test
+    fun shouldShowMainActivityAfterSuccess() {
+        //TODO this test
+    }
+
+    @Test
+    fun shouldShowCreateAccountActivity() {
+        //TODO
+    }
 }
