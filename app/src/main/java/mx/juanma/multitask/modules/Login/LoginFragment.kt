@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.Login
 
+import android.app.Activity
 import android.app.Fragment
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -95,8 +96,11 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun closeActivityWithOkResult() {
+        this.activity.setResult(Activity.RESULT_OK)
+        this.activity.finish()
     }
 
     override fun launchCreateAccountActivity() {
+        //TODO launche create account activity
     }
 }
