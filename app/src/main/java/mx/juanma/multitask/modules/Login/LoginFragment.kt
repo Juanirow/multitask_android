@@ -62,10 +62,13 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun showPasswordRequiredError() {
-        ViewHelper.setTextInputLayoutError(R.string.error_password_required, labelPassword, this.activity)
+        ViewHelper.setTextInputLayoutError(R.string.error_password_required,
+                labelPassword, this.activity)
     }
 
     override fun showPasswordWrongLengthError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_password_wrong_length,
+                labelPassword, this.activity)
     }
 
     override fun showProgressDialog() {

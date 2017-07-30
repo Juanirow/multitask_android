@@ -13,4 +13,5 @@
     <string name="error_email_required">The email can not be empty</string>
     <string name="error_email_invalid">The email is invalid</string>
     <string name="error_password_required">The Password can not be empty</string>
+    <string name="error_password_wrong_length">The minimum characters for the password is 6.</string>
 </resources>
