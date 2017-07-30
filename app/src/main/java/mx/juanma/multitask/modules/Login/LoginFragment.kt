@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_login.*
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
+import mx.juanma.multitask.helpers.ViewHelper
 
 
 /**
@@ -35,17 +37,24 @@ class LoginFragment: Fragment(), ILoginView {
         super.onActivityCreated(savedInstanceState)
 
         this.mPresenter = LoginPresenter(this, Injector.provideLoginInteractor())
+        this.btnLogin.setOnClickListener { this.mPresenter?.onLoginBtnClick() }
+        this.btnCreateAccount.setOnClickListener { this.mPresenter?.onCreateAccountButton() }
     }
 
     override fun getEmail(): String? {
-        return null
+        this.labelEmail.error = null
+        this.labelEmail.isErrorEnabled = false
+        return this.inputEmail.text.toString().trim()
     }
 
     override fun getPassword(): String? {
-        return null
+        this.labelPassword.error = null
+        this.labelPassword.isErrorEnabled = false
+        return this.inputPassword.text.toString().trim()
     }
 
     override fun showEmailRequiredError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_email_required, labelEmail, this.activity)
     }
 
     override fun showEmailInvalid() {
