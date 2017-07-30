@@ -91,6 +91,7 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun showWrongCredentialsError() {
+        DialogCreator.showError(this.activity, R.string.error_wrong_credentials)
     }
 
     override fun closeActivityWithOkResult() {
