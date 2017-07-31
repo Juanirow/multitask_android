@@ -15,6 +15,16 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
     fun onClickCreateAccount() {
         val email = mView.getEmail()
         if(!validateEmail(email)) return
+        val password = mView.getPassword()
+        if(!validPassword(password)) return
+    }
+
+    private fun validPassword(password: String): Boolean {
+        if(password.isEmpty()) {
+            mView.showPasswordRequiredError()
+            return false
+        }
+        return true
     }
 
     private fun validateEmail(email: String): Boolean {
