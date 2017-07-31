@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.Login
 
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.helpers.EmailValidator
 
 
@@ -10,8 +11,6 @@ import mx.juanma.multitask.helpers.EmailValidator
  */
 class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
         ILoginInteractor.Callback {
-
-    private val PASSWORD_MIN_LEN = 6
 
     fun onCreateAccountButton() {
         this.mView.launchCreateAccountActivity()
@@ -31,7 +30,7 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
             this.mView.showPasswordRequiredError()
             return false
         }
-        if(password.length < PASSWORD_MIN_LEN) {
+        if(password.length < Constants.MINIMUM_PASSWORD_LENGTH) {
             this.mView.showPasswordWrongLengthError()
             return false
         }
