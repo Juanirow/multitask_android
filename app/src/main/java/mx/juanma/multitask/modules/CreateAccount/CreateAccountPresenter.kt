@@ -65,5 +65,7 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
     }
 
     override fun onCreateAccountSuccess() {
+        mView.hideProgressDialog()
+        mView.closeActivityWithOkResult()
     }
 }
