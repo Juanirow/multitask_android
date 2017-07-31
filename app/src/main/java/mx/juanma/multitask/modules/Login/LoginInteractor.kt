@@ -24,7 +24,12 @@ class LoginInteractor: ILoginInteractor {
                     }
                     else {
                         try {
-                            task.exception
+                            if(task.exception != null) {
+                                throw task.exception!!
+                            }
+                            else {
+                                listener?.onLoginServerError()
+                            }
                         }
                         catch(e: FirebaseAuthInvalidCredentialsException) {
                             Log.d(TAG, "signUp: ${e.errorCode}")

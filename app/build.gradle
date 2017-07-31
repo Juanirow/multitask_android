@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 25
@@ -64,12 +63,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //FIREBASE
-    compile 'com.google.firebase:firebase-core:9.0.0'
-    compile 'com.google.firebase:firebase-database:9.0.0'
-    compile 'com.google.firebase:firebase-auth:9.0.0'
+    compile 'com.google.firebase:firebase-core:10.2.1'
+    compile 'com.google.firebase:firebase-database:10.2.1'
+    compile 'com.google.firebase:firebase-auth:10.2.1'
 
-    //GOOGLE auth
-    compile 'com.google.android.gms:play-services-auth:9.0.0'
+//    GOOGLE auth
+    compile 'com.google.android.gms:play-services:10.2.1'
 
 
     //KOTLIN
@@ -84,3 +83,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services'
