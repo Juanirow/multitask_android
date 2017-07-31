@@ -6,8 +6,19 @@ package mx.juanma.multitask.modules.CreateAccount
  * Nakva
  * linanjm90@gmail.com
  */
-class CreateAccountPresenter(mView: ICreateAccountView, mInteractor: ICreateAccountInteractor) {
+class CreateAccountPresenter(var mView: ICreateAccountView,
+                             var mInteractor: ICreateAccountInteractor) {
 
     fun onClickCreateAccount() {
+        val email = mView.getEmail()
+        if(!validateEmail(email)) return
+    }
+
+    private fun validateEmail(email: String): Boolean {
+        if(email.isEmpty()) {
+            mView.showEmailRequiredError()
+            return false
+        }
+        return true
     }
 }
