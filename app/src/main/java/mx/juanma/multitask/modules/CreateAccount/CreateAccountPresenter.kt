@@ -18,8 +18,12 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
         if(!validateEmail(email)) return
         val password = mView.getPassword()
         if(!validPassword(password)) return
+        val passwordAgain = mView.getPasswordAgain()
+        if(password != passwordAgain) {
+            mView.showPasswordNotMatchError()
+            return
+        }
     }
-
     private fun validPassword(password: String): Boolean {
         if(password.isEmpty()) {
             mView.showPasswordRequiredError()
