@@ -106,6 +106,9 @@ class LoginActivityTest {
 
     @Test
     fun shouldShowCreateAccountActivity() {
-        //TODO
+        val error = mRule.activity.resources.getString(R.string.create_account)
+        onView(withId(R.id.btnCreateAccount)).perform(click())
+        onView(withText(error)).check(matches(allOf(withText(error),
+                isDisplayed())))
     }
 }

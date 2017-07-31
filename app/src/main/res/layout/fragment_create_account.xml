@@ -9,7 +9,6 @@
         android:id="@+id/labelEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/labelLogo"
         app:errorTextAppearance="@style/LabelError"
         app:hintTextAppearance="@style/Label">
 

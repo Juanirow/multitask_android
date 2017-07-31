@@ -3,6 +3,7 @@ package mx.juanma.multitask.modules.Login
 import android.app.Activity
 import android.app.Fragment
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.helpers.ViewHelper
+import mx.juanma.multitask.modules.CreateAccount.CreateAccountActivity
 
 
 /**
@@ -101,6 +103,7 @@ class LoginFragment: Fragment(), ILoginView {
     }
 
     override fun launchCreateAccountActivity() {
-        //TODO launche create account activity
+        val intent = Intent(this.activity, CreateAccountActivity::class.java)
+        startActivityForResult(intent, 0)
     }
 }
