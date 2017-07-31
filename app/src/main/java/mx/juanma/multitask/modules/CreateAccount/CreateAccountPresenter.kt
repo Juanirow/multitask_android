@@ -60,6 +60,8 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
     }
 
     override fun onUserAlreadyInUse() {
+        mView.hideProgressDialog()
+        mView.showUserAlreadyInUserError()
     }
 
     override fun onCreateAccountSuccess() {
