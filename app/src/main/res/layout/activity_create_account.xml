@@ -8,13 +8,13 @@
     tools:context="mx.juanma.multitask.modules.CreateAccount.CreateAccountActivity">
 
     <include
-        android:id="@+id/appbar"
+        android:id="@+id/app_bar"
         layout="@layout/tool_bar"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/appbar"
-        android:id="@+id/content_login"/>
+        android:id="@+id/content_create_account"/>
 
 </RelativeLayout>
