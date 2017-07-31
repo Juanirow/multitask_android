@@ -2,7 +2,6 @@ package mx.juanma.multitask.modules.CreateAccount
 
 import mx.juanma.multitask.Constants
 import mx.juanma.multitask.helpers.EmailValidator
-import mx.juanma.multitask.helpers.ViewHelper
 
 
 /**
@@ -11,7 +10,7 @@ import mx.juanma.multitask.helpers.ViewHelper
  * linanjm90@gmail.com
  */
 class CreateAccountPresenter(var mView: ICreateAccountView,
-                             var mInteractor: ICreateAccountInteractor) {
+                             var mInteractor: ICreateAccountInteractor) : ICreateAccountInteractor.Callback {
 
     fun onClickCreateAccount() {
         val email = mView.getEmail()
@@ -23,6 +22,8 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
             mView.showPasswordNotMatchError()
             return
         }
+        mView.showProgressDialog()
+        mInteractor.createAccount(email, password, this)
     }
     private fun validPassword(password: String): Boolean {
         if(password.isEmpty()) {
@@ -47,5 +48,20 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
             return false
         }
         return true
+    }
+
+    /**
+     * Create Account Listener
+     */
+
+    override fun onCreateAccountServerError() {
+        mView.hideProgressDialog()
+        mView.showServerError()
+    }
+
+    override fun onUserAlreadyInUse() {
+    }
+
+    override fun onCreateAccountSuccess() {
     }
 }
