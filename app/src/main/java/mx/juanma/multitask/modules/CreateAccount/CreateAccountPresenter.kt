@@ -1,5 +1,8 @@
 package mx.juanma.multitask.modules.CreateAccount
 
+import mx.juanma.multitask.helpers.EmailValidator
+import mx.juanma.multitask.helpers.ViewHelper
+
 
 /**
  * Created by Juancho on 31/07/17.
@@ -17,6 +20,11 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
     private fun validateEmail(email: String): Boolean {
         if(email.isEmpty()) {
             mView.showEmailRequiredError()
+            return false
+        }
+
+        if(!EmailValidator.isValid(email)){
+            mView.showEmailInvalidError()
             return false
         }
         return true
