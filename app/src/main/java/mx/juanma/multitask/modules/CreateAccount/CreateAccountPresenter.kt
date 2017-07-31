@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.CreateAccount
 
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.helpers.EmailValidator
 import mx.juanma.multitask.helpers.ViewHelper
 
@@ -22,6 +23,10 @@ class CreateAccountPresenter(var mView: ICreateAccountView,
     private fun validPassword(password: String): Boolean {
         if(password.isEmpty()) {
             mView.showPasswordRequiredError()
+            return false
+        }
+        if(password.length < Constants.MINIMUM_PASSWORD_LENGTH) {
+            mView.showPasswordWrongLengthError()
             return false
         }
         return true
