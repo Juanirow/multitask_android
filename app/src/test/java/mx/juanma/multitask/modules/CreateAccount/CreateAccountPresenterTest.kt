@@ -37,6 +37,7 @@ class CreateAccountPresenterTest {
         Mockito.`when`(this.mView.getEmail()).thenReturn("")
 
         mPresenter.onClickCreateAccount()
+        Mockito.verify(mView).getEmail()
 
         Mockito.verify(this.mView).showEmailRequiredError()
     }
@@ -46,6 +47,7 @@ class CreateAccountPresenterTest {
         Mockito.`when`(this.mView.getEmail()).thenReturn("nailah")
 
         mPresenter.onClickCreateAccount()
+        Mockito.verify(mView).getEmail()
 
         Mockito.verify(this.mView).showEmailInvalidError()
     }
@@ -56,6 +58,8 @@ class CreateAccountPresenterTest {
         Mockito.`when`(this.mView.getPassword()).thenReturn("")
 
         mPresenter.onClickCreateAccount()
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
 
         Mockito.verify(this.mView).showPasswordRequiredError()
     }
@@ -66,6 +70,8 @@ class CreateAccountPresenterTest {
         Mockito.`when`(this.mView.getPassword()).thenReturn("12345")
 
         mPresenter.onClickCreateAccount()
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
 
         Mockito.verify(this.mView).showPasswordWrongLengthError()
     }
@@ -77,6 +83,9 @@ class CreateAccountPresenterTest {
         Mockito.`when`(this.mView.getPasswordAgain()).thenReturn("123")
 
         mPresenter.onClickCreateAccount()
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
+        Mockito.verify(mView).getPasswordAgain()
 
         Mockito.verify(this.mView).showPasswordNotMatchError()
     }
@@ -90,6 +99,9 @@ class CreateAccountPresenterTest {
 
         mPresenter.onClickCreateAccount()
 
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
+        Mockito.verify(mView).getPasswordAgain()
         Mockito.verify(this.mView).showProgressDialog()
         Mockito.verify(this.mInteractor).createAccount(anyString(), anyString(), captor.capture())
 
@@ -107,6 +119,9 @@ class CreateAccountPresenterTest {
 
         mPresenter.onClickCreateAccount()
 
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
+        Mockito.verify(mView).getPasswordAgain()
         Mockito.verify(this.mView).showProgressDialog()
         Mockito.verify(this.mInteractor).createAccount(anyString(), anyString(), captor.capture())
 
@@ -124,6 +139,9 @@ class CreateAccountPresenterTest {
 
         mPresenter.onClickCreateAccount()
 
+        Mockito.verify(mView).getEmail()
+        Mockito.verify(mView).getPassword()
+        Mockito.verify(mView).getPasswordAgain()
         Mockito.verify(this.mView).showProgressDialog()
         Mockito.verify(this.mInteractor).createAccount(anyString(), anyString(), captor.capture())
 
