@@ -1,6 +1,11 @@
 package mx.juanma.multitask.modules.CreateAccount
 
 import android.app.Fragment
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import mx.juanma.multitask.R
 
 
 /**
@@ -16,6 +21,12 @@ class CreateAccountFragment: Fragment() {
             fragment.retainInstance = true
             return fragment
         }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View {
+        val view = inflater.inflate(R.layout.fragment_create_account, container, false)
+        return view
     }
 
 
