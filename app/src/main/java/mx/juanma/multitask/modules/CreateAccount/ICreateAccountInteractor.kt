@@ -9,6 +9,12 @@ package mx.juanma.multitask.modules.CreateAccount
 interface ICreateAccountInteractor {
 
     interface Callback {
+        fun onCreateAccountServerError()
+        fun onUserAlreadyInUse()
+        fun onCreateAccountSuccess()
 
     }
+
+    fun  createAccount(email: String, anyString1: String,
+                       listener: ICreateAccountInteractor.Callback?)
 }

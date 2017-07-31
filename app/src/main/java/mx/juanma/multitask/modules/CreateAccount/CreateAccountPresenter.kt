@@ -6,5 +6,8 @@ package mx.juanma.multitask.modules.CreateAccount
  * Nakva
  * linanjm90@gmail.com
  */
-class CreateAccountPresenter {
+class CreateAccountPresenter(mView: ICreateAccountView, mInteractor: ICreateAccountInteractor) {
+
+    fun onClickCreateAccount() {
+    }
 }
