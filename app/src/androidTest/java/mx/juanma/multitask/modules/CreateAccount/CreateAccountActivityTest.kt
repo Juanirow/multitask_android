@@ -1,4 +1,4 @@
-package mx.juanma.multitask.Login
+package mx.juanma.multitask.modules.CreateAccount
 
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
@@ -16,17 +16,16 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 /**
- * Created by Juancho on 28/07/17.
+ * Created by Juancho on 02/08/17.
  * Nakva
  * linanjm90@gmail.com
  */
 @RunWith(AndroidJUnit4::class)
-class LoginActivityTest {
+class CreateAccountActivityTest {
 
     @Rule @JvmField
-    val mRule = ActivityTestRule<LoginActivity>(LoginActivity::class.java)
+    val mRule = ActivityTestRule<CreateAccountActivity>(CreateAccountActivity::class.java)
 
     @Test
     fun shouldSetNullErrorWhenEmailIsEmpty() {
@@ -73,23 +72,37 @@ class LoginActivityTest {
     }
 
     @Test
+    fun shouldSetErrorWhenPasswordNotMatch() {
+        val error = mRule.activity.resources.getString(R.string.error_password_not_match)
+        onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.inputPassword)).perform(typeText("123456"))
+        onView(withId(R.id.inputPasswordAgain)).perform(typeText(""))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.labelPassword)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
+    }
+
+    @Test
     fun shouldShowServerError() {
         val error = mRule.activity.resources.getString(R.string.error_server_generic)
         onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.inputPassword)).perform(typeText("123456"))
+        onView(withId(R.id.inputPasswordAgain)).perform(typeText("123456"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.btnLogin)).perform(click())
         onView(withText(error)).check(matches(allOf(withText(error),
-                        isDisplayed())))
+                isDisplayed())))
     }
 
     @Test
-    fun shouldShowWrongCredentials() {
-        val error = mRule.activity.resources.getString(R.string.error_wrong_credentials)
+    fun shouldShowUserAlreadyRegister() {
+        val error = mRule.activity.resources.getString(R.string.error_user_already_register)
         onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.inputPassword)).perform(typeText("223456"))
+        onView(withId(R.id.inputPassword)).perform(typeText("123456"))
+        onView(withId(R.id.inputPasswordAgain)).perform(typeText("123456"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.btnLogin)).perform(click())
         onView(withText(error)).check(matches(allOf(withText(error),
@@ -97,15 +110,7 @@ class LoginActivityTest {
     }
 
     @Test
-    fun shouldShowMainActivityAfterSuccess() {
+    fun shouldMainScreen() {
         //TODO this test
-    }
-
-    @Test
-    fun shouldShowCreateAccountActivity() {
-        val error = mRule.activity.resources.getString(R.string.create_account)
-        onView(withId(R.id.btnCreateAccount)).perform(click())
-        onView(withText(error)).check(matches(allOf(withText(error),
-                isDisplayed())))
     }
 }

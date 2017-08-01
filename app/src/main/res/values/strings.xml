@@ -21,4 +21,6 @@
     <string name="error_server_generic">Internal Server Error, Try again later.</string>
     <string name="validating_credentials">Validating Credentials</string>
     <string name="error_wrong_credentials">Wrong Credentials.</string>
+    <string name="error_password_not_match">The password not match</string>
+    <string name="error_user_already_register">This email is already used</string>
 </resources>
