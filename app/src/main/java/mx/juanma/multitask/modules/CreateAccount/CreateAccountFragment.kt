@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.CreateAccount
 
+import android.app.Activity
 import android.app.Fragment
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -107,8 +108,11 @@ class CreateAccountFragment: Fragment(), ICreateAccountView {
     }
 
     override fun showUserAlreadyInUserError() {
+        DialogCreator.showError(this.activity, R.string.error_user_already_register)
     }
 
     override fun closeActivityWithOkResult() {
+        activity.setResult(Activity.RESULT_OK)
+        activity.finish()
     }
 }
