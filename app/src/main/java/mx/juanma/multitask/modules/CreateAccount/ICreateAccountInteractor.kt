@@ -15,6 +15,6 @@ interface ICreateAccountInteractor {
 
     }
 
-    fun  createAccount(email: String, anyString1: String,
+    fun  createAccount(email: String, password: String,
                        listener: ICreateAccountInteractor.Callback?)
 }
