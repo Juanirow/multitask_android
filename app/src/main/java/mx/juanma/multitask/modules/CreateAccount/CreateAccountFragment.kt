@@ -68,6 +68,8 @@ class CreateAccountFragment: Fragment(), ICreateAccountView {
     }
 
     override fun showEmailInvalidError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_email_invalid, this.labelEmail,
+                this.activity)
     }
 
     override fun showPasswordRequiredError() {
