@@ -78,6 +78,8 @@ class CreateAccountFragment: Fragment(), ICreateAccountView {
     }
 
     override fun showPasswordWrongLengthError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_password_wrong_length, this.labelEmail,
+                this.activity)
     }
 
     override fun showPasswordNotMatchError() {
