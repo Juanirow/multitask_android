@@ -73,16 +73,18 @@ class CreateAccountFragment: Fragment(), ICreateAccountView {
     }
 
     override fun showPasswordRequiredError() {
-        ViewHelper.setTextInputLayoutError(R.string.error_password_required, this.labelEmail,
+        ViewHelper.setTextInputLayoutError(R.string.error_password_required, this.labelPassword,
                 this.activity)
     }
 
     override fun showPasswordWrongLengthError() {
-        ViewHelper.setTextInputLayoutError(R.string.error_password_wrong_length, this.labelEmail,
+        ViewHelper.setTextInputLayoutError(R.string.error_password_wrong_length, this.labelPassword,
                 this.activity)
     }
 
     override fun showPasswordNotMatchError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_password_not_match, this.labelPassword,
+                this.activity)
     }
 
     override fun showProgressDialog() {
