@@ -32,9 +32,8 @@ class CreateAccountActivityTest {
         val error = mRule.activity.resources.getString(R.string.error_email_required)
         onView(withId(R.id.inputEmail)).perform(typeText(""))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.inputPassword)).perform(typeText(""))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withId(R.id.labelEmail)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
@@ -45,7 +44,7 @@ class CreateAccountActivityTest {
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.inputPassword)).perform(typeText(""))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withId(R.id.labelEmail)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
@@ -56,7 +55,7 @@ class CreateAccountActivityTest {
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.inputPassword)).perform(typeText(""))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withId(R.id.labelPassword)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
@@ -67,7 +66,7 @@ class CreateAccountActivityTest {
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.inputPassword)).perform(typeText("12345"))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withId(R.id.labelPassword)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
@@ -79,7 +78,7 @@ class CreateAccountActivityTest {
         onView(withId(R.id.inputPassword)).perform(typeText("123456"))
         onView(withId(R.id.inputPasswordAgain)).perform(typeText(""))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withId(R.id.labelPassword)).check(matches(CustomMatcher.hasTextInputLayoutErrorText(error)))
     }
 
@@ -91,7 +90,7 @@ class CreateAccountActivityTest {
         onView(withId(R.id.inputPassword)).perform(typeText("123456"))
         onView(withId(R.id.inputPasswordAgain)).perform(typeText("123456"))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withText(error)).check(matches(allOf(withText(error),
                 isDisplayed())))
     }
@@ -101,10 +100,10 @@ class CreateAccountActivityTest {
         val error = mRule.activity.resources.getString(R.string.error_user_already_register)
         onView(withId(R.id.inputEmail)).perform(typeText("nailah@mail.com"))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.inputPassword)).perform(typeText("123456"))
-        onView(withId(R.id.inputPasswordAgain)).perform(typeText("123456"))
+        onView(withId(R.id.inputPassword)).perform(typeText("223456"))
+        onView(withId(R.id.inputPasswordAgain)).perform(typeText("223456"))
         Espresso.closeSoftKeyboard()
-        onView(withId(R.id.btnLogin)).perform(click())
+        onView(withId(R.id.btnCreateAccount)).perform(click())
         onView(withText(error)).check(matches(allOf(withText(error),
                 isDisplayed())))
     }

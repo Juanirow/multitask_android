@@ -1,5 +1,6 @@
 package mx.juanma.multitask.Injection
 
+import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
 import mx.juanma.multitask.modules.Login.ILoginInteractor
 
 
@@ -11,4 +12,6 @@ import mx.juanma.multitask.modules.Login.ILoginInteractor
 interface IProviders {
 
     fun provideLoginInteractor(): ILoginInteractor
+
+    fun provideCreateAccountInteractor(): ICreateAccountInteractor
 }
