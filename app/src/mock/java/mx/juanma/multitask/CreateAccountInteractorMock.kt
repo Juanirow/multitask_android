@@ -1,5 +1,6 @@
 package mx.juanma.multitask
 
+import android.os.Handler
 import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
 
 
@@ -10,8 +11,21 @@ import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
  */
 class CreateAccountInteractorMock: ICreateAccountInteractor {
 
-    override fun createAccount(email: String, anyString1: String,
-                               listener: ICreateAccountInteractor.Callback?) {
-    }
+    val handler = Handler()
 
+    override fun createAccount(email: String, password: String,
+                               listener: ICreateAccountInteractor.Callback?) {
+        handler.postDelayed({
+            if (password == "123456") {
+                listener?.onCreateAccountServerError()
+            } else {
+                if (password == "223456") {
+                    listener?.onUserAlreadyInUse()
+                } else {
+                    listener?.onCreateAccountSuccess()
+                }
+            }
+
+        }, 2000)
+    }
 }
