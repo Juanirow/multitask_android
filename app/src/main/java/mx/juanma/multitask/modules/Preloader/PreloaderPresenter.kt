@@ -25,6 +25,11 @@ class PreloaderPresenter(var mView: IPreloaderView, var mInteractor: IPreloaderI
                     mView.closeActivity()
                 }
             }
+            Constants.REQUEST_LOGIN_ACTIVITY -> {
+                if(resultCode == Activity.RESULT_OK) {
+                    mInteractor.verifySession(this)
+                }
+            }
         }
 
     }
