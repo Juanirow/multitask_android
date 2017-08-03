@@ -3,6 +3,7 @@ package mx.juanma.multitask
 import mx.juanma.multitask.Injection.IProviders
 import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
 import mx.juanma.multitask.modules.Login.ILoginInteractor
+import mx.juanma.multitask.modules.Preloader.IPreloaderInteractor
 
 
 /**
@@ -18,5 +19,9 @@ object Injector: IProviders {
 
     override fun provideCreateAccountInteractor(): ICreateAccountInteractor {
         return CreateAccountInteractorMock()
+    }
+
+    override fun providePreloaderInteractor(): IPreloaderInteractor {
+        return PreloaderInteractorMock()
     }
 }
