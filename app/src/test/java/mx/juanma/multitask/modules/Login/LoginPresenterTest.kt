@@ -1,5 +1,7 @@
 package mx.juanma.multitask.modules.Login
 
+import android.app.Activity
+import mx.juanma.multitask.Constants
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -35,7 +37,7 @@ class LoginPresenterTest {
 
     @After
     fun tearDown() {
-        Mockito.verifyNoMoreInteractions(this.mView)
+        Mockito.verifyNoMoreInteractions(this.mView, this.mInteractor)
     }
 
     @Test
@@ -154,4 +156,13 @@ class LoginPresenterTest {
         this.mPresenter.onCreateAccountButton()
         verify(this.mView).launchCreateAccountActivity()
     }
+
+    @Test
+    fun shouldCloseActivityWithOkResultWhenCreateAccountReturnOKResult() {
+        this.mPresenter.onActivityResult(Constants.REQUEST_CREATE_ACCOUNT_ACTIVITY,
+                Activity.RESULT_OK)
+
+        verify(this.mView).closeActivityWithOkResult()
+    }
+
 }
