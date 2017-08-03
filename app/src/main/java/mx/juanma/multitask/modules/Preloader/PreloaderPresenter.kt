@@ -25,6 +25,6 @@ class PreloaderPresenter(var mView: IPreloaderView, var mInteractor: IPreloaderI
     }
 
     override fun onInActiveSession() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mView.launchLoginActivity()
     }
 }
