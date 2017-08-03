@@ -1,4 +1,4 @@
-package mx.juanma.multitask;
+package mx.juanma.multitask.modules.Main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ContainerActivity extends AppCompatActivity
+import mx.juanma.multitask.R;
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

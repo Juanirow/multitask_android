@@ -11,6 +11,7 @@ import mx.juanma.multitask.Constants
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.modules.Login.LoginActivity
+import mx.juanma.multitask.modules.Main.MainActivity
 
 
 /**
@@ -51,8 +52,9 @@ class PreloaderFragment: Fragment(), IPreloaderView {
      */
 
     override fun launchMainActivity() {
-        Log.d(TAG, "launchMainActivity: ")    
-        //TODO launch main activity
+        Log.d(TAG, "launchMainActivity: ")
+        val intent = Intent(this.activity, MainActivity::class.java)
+        startActivityForResult(intent, Constants.REQUEST_MAIN_ACTIVITY)
     }
 
     override fun launchLoginActivity() {

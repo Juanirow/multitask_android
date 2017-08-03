@@ -5,6 +5,8 @@
     <color name="colorAccent">#ff6f00</color>
 
 
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#2a2a2a</color>
 
     <color name="textContrast">#FFFFFF</color>
 </resources>
