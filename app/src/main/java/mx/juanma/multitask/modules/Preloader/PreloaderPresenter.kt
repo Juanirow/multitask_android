@@ -1,5 +1,8 @@
 package mx.juanma.multitask.modules.Preloader
 
+import android.app.Activity
+import mx.juanma.multitask.Constants
+
 
 /**
  * Created by Juancho on 03/08/17.
@@ -13,6 +16,13 @@ class PreloaderPresenter(var mView: IPreloaderView, var mInteractor: IPreloaderI
     }
 
     fun  activityResult(requestCode: Int, resultCode: Int) {
+        when(requestCode) {
+            Constants.REQUEST_MAIN_ACTIVITY -> {
+                if(resultCode == Activity.RESULT_OK) {
+                    mView.launchLoginActivity()
+                }
+            }
+        }
 
     }
 
