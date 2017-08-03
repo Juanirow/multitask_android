@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.Login
 
+import android.app.Activity
 import mx.juanma.multitask.Constants
 import mx.juanma.multitask.helpers.EmailValidator
 
@@ -14,6 +15,16 @@ class LoginPresenter(val mView: ILoginView, val mInteractor: ILoginInteractor):
 
     fun onCreateAccountButton() {
         this.mView.launchCreateAccountActivity()
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int) {
+        when(requestCode) {
+            Constants.REQUEST_CREATE_ACCOUNT_ACTIVITY -> {
+                if(resultCode == Activity.RESULT_OK) {
+                    mView.closeActivityWithOkResult()
+                }
+            }
+        }
     }
 
     fun onLoginBtnClick() {

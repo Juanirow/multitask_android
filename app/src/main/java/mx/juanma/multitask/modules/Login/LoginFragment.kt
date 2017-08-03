@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_login.*
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
@@ -46,6 +47,15 @@ class LoginFragment: Fragment(), ILoginView {
         this.btnLogin.setOnClickListener { this.mPresenter?.onLoginBtnClick() }
         this.btnCreateAccount.setOnClickListener { this.mPresenter?.onCreateAccountButton() }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        mPresenter?.onActivityResult(requestCode, resultCode)
+    }
+
+    /**
+     * VIEW
+     */
 
     override fun getEmail(): String? {
         this.labelEmail.error = null
@@ -104,6 +114,7 @@ class LoginFragment: Fragment(), ILoginView {
 
     override fun launchCreateAccountActivity() {
         val intent = Intent(this.activity, CreateAccountActivity::class.java)
-        startActivityForResult(intent, 0)
+        startActivityForResult(intent, Constants.REQUEST_CREATE_ACCOUNT_ACTIVITY)
     }
+
 }
