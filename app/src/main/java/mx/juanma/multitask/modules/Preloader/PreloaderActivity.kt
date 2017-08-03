@@ -14,6 +14,7 @@ class PreloaderActivity: Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_preloader)
 
         this.fragmentManager.beginTransaction()
                 .add(R.id.content_preloader, PreloaderFragment.getInstance())

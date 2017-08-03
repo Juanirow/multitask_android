@@ -3,6 +3,7 @@ package mx.juanma.multitask.modules.Preloader
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import mx.juanma.multitask.modules.Login.LoginActivity
  */
 class PreloaderFragment: Fragment(), IPreloaderView {
 
+    val TAG = "PreloaderFragment"
     var mPresenter: PreloaderPresenter? = null
 
     companion object {
@@ -49,6 +51,7 @@ class PreloaderFragment: Fragment(), IPreloaderView {
      */
 
     override fun launchMainActivity() {
+        Log.d(TAG, "launchMainActivity: ")    
         //TODO launch main activity
     }
 
