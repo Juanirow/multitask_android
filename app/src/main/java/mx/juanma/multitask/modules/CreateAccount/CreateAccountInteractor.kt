@@ -20,11 +20,11 @@ class CreateAccountInteractor: ICreateAccountInteractor {
                 password).addOnCompleteListener {
             task ->
             if(task.isSuccessful) {
+                val userId = task.result.user.uid
                 val database = FirebaseDatabase.getInstance()
                 val ref = database.getReference("users")
-                val newRef = ref.push()
-                val user = User(newRef.key, email)
-                newRef.setValue(user)
+                val user = User(userId, email)
+                ref.child(userId).setValue(user)
                 listener?.onCreateAccountSuccess()
             }
             else {
