@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".modules.CreateAccount.CreateAccountActivity"
             android:label="@string/create_account"/>
+
+        <activity android:name=".modules.Preloader.PreloaderActivity"/>
     </application>
 
 </manifest>
