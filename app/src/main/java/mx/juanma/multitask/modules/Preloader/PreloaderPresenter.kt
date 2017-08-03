@@ -29,6 +29,9 @@ class PreloaderPresenter(var mView: IPreloaderView, var mInteractor: IPreloaderI
                 if(resultCode == Activity.RESULT_OK) {
                     mInteractor.verifySession(this)
                 }
+                else {
+                    mView.closeActivity()
+                }
             }
         }
 
