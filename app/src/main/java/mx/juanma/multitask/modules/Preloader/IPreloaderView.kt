@@ -7,4 +7,7 @@ package mx.juanma.multitask.modules.Preloader
  * linanjm90@gmail.com
  */
 interface IPreloaderView {
+    fun launchMainActivity()
+    fun launchLoginActivity()
+    fun closeActivity()
 }

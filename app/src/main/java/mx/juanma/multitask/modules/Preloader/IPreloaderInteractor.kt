@@ -7,4 +7,12 @@ package mx.juanma.multitask.modules.Preloader
  * linanjm90@gmail.com
  */
 interface IPreloaderInteractor {
+
+    interface Callback {
+        fun onActiveSession()
+        fun onInActiveSession()
+
+    }
+
+    fun  verifySession(listener: IPreloaderInteractor.Callback?)
 }

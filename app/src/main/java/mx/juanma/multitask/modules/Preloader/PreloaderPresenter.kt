@@ -6,5 +6,10 @@ package mx.juanma.multitask.modules.Preloader
  * Nakva
  * linanjm90@gmail.com
  */
-class PreloaderPresenter {
+class PreloaderPresenter(mView: IPreloaderView, mInteractor: IPreloaderInteractor) {
+
+    fun verifyCurrentSession() {
+    }
+
+    fun  activityResult(requestCode: Int, resultCode: Int) {}
 }
