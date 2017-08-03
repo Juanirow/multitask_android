@@ -6,10 +6,25 @@ package mx.juanma.multitask.modules.Preloader
  * Nakva
  * linanjm90@gmail.com
  */
-class PreloaderPresenter(mView: IPreloaderView, mInteractor: IPreloaderInteractor) {
+class PreloaderPresenter(var mView: IPreloaderView, var mInteractor: IPreloaderInteractor) : IPreloaderInteractor.Callback {
 
     fun verifyCurrentSession() {
+        mInteractor.verifySession(this)
     }
 
-    fun  activityResult(requestCode: Int, resultCode: Int) {}
+    fun  activityResult(requestCode: Int, resultCode: Int) {
+
+    }
+
+    /**
+     * CALLBACK INTERACTOR
+     */
+
+    override fun onActiveSession() {
+        mView.launchMainActivity()
+    }
+
+    override fun onInActiveSession() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
