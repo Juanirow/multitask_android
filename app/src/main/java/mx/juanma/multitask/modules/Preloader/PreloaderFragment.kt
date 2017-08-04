@@ -43,8 +43,8 @@ class PreloaderFragment: Fragment(), IPreloaderView {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         mPresenter?.activityResult(requestCode, resultCode)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     /**

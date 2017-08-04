@@ -12,10 +12,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import mx.juanma.multitask.Injector
 
 import mx.juanma.multitask.R
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, IMainView {
+
+    var mPresenter: MainPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
+
+        mPresenter = MainPresenter(this, Injector.provideMainInteractor())
     }
 
     override fun onBackPressed() {
@@ -72,12 +77,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         val id = item.itemId
 
-//        when(id) {
-//            R.id.nav_logout -> { }
-//        }
+        when(id) {
+            R.id.nav_logout -> { mPresenter?.onClickLogout() }
+        }
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    /**
+     * VIEW
+     */
+
+    override fun finishActivityWithOkResult() {
+        this.setResult(android.app.Activity.RESULT_OK)
+        finish()
     }
 }

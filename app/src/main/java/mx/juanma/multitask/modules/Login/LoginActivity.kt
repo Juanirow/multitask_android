@@ -5,6 +5,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_login.*
 
 import mx.juanma.multitask.R
+import mx.juanma.multitask.modules.Main.MainPresenter
 
 class LoginActivity : Activity() {
 
