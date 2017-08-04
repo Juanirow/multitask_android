@@ -6,8 +6,10 @@ package mx.juanma.multitask.modules.Main
  * Nakva
  * linanjm90@gmail.com
  */
-class MainPresenter(mView: IMainView, mInteractor: IMainInteractor) {
+class MainPresenter(var mView: IMainView,var mInteractor: IMainInteractor) {
 
     fun onClickLogout() {
+        mInteractor.logout()
+        mView.finishActivityWithOkResult()
     }
 }
