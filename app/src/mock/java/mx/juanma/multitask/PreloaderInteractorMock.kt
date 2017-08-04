@@ -11,6 +11,6 @@ import mx.juanma.multitask.modules.Preloader.IPreloaderInteractor
 class PreloaderInteractorMock: IPreloaderInteractor {
 
     override fun verifySession(listener: IPreloaderInteractor.Callback?) {
-        listener?.onInActiveSession()
+        listener?.onActiveSession()
     }
 }

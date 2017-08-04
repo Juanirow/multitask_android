@@ -16,11 +16,16 @@ class LoginInteractorMock: ILoginInteractor {
     override fun signUp(email: String, password: String, listener: ILoginInteractor.Callback?) {
 
         val runnable = Runnable {
-            if(password == "123456") {
-                listener?.onLoginServerError()
+            if(password == "juanma") {
+                listener?.onLoginSuccessful()
             }
             else {
-                listener?.onWrongCredentials()
+                if(password == "123456") {
+                    listener?.onLoginServerError()
+                }
+                else {
+                    listener?.onWrongCredentials()
+                }
             }
         }
         mHandler.postDelayed(runnable, 2000)
