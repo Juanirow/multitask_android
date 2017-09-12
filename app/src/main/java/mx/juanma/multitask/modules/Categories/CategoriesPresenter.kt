@@ -29,5 +29,10 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     }
 
     override fun onLoadCategories(categories: ArrayList<Category>) {
+        this.mView.closeProgressDialog()
+        if(categories.isEmpty()) {
+            this.mView.hideListView()
+            this.mView.showEmptyListDialog()
+        }
     }
 }
