@@ -81,7 +81,7 @@ class AddCategoryPresenterTest {
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(Category(), captor.capture())
+        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
         captor.value.onCategoryAdded()
         Mockito.verify(mView).dismissProgressDialog()
@@ -96,7 +96,7 @@ class AddCategoryPresenterTest {
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(Category(), captor.capture())
+        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
         captor.value.onInternalServerError()
         Mockito.verify(mView).dismissProgressDialog()

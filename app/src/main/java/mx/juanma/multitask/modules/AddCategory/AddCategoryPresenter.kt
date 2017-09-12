@@ -46,6 +46,7 @@ class AddCategoryPresenter(var mView: IAddCategoryView,
     }
 
     override fun onInternalServerError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.mView.dismissProgressDialog()
+        this.mView.showInternalServerError()
     }
 }
