@@ -28,6 +28,7 @@ class AddCategoryPresenter(var mView: IAddCategoryView,
     }
 
     fun onExpiredSessionConfirm() {
+        this.mView.closeActivityWithExpiredSessionCode()
     }
 
     /**
