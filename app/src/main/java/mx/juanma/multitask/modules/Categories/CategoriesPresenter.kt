@@ -15,8 +15,8 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
      *  Presenter Calls
      */
     fun loadCategories() {
-        mView.showProgressDialog()
-        mInteractor.getUserCategories(this)
+        this.mView.showProgressDialog()
+        this.mInteractor.getUserCategories(this)
     }
 
     /**
@@ -33,6 +33,11 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
         if(categories.isEmpty()) {
             this.mView.hideListView()
             this.mView.showEmptyListDialog()
+        }
+        else {
+            this.mView.showListView()
+            this.mView.hideEmptyListDialog()
+            this.mView.loadCategoriesList(categories)
         }
     }
 }
