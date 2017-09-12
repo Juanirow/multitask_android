@@ -41,7 +41,8 @@ class AddCategoryPresenter(var mView: IAddCategoryView,
     }
 
     override fun onCategoryAdded() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.mView.dismissProgressDialog()
+        this.mView.closeActivityWithOkResult()
     }
 
     override fun onInternalServerError() {
