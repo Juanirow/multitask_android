@@ -6,5 +6,11 @@ package mx.juanma.multitask.modules.Categories
  * Nakva
  * linanjm90@gmail.com
  */
-class CategoriesPresenter {
+class CategoriesPresenter(mView: ICategoriesView, mInteractor: ICategoriesInteractor) {
+
+    /**
+     *  Presenter Calls
+     */
+    fun loadCategories() {
+    }
 }
