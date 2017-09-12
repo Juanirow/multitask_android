@@ -1,6 +1,7 @@
 package mx.juanma.multitask
 
 import mx.juanma.multitask.Injection.IProviders
+import mx.juanma.multitask.modules.AddCategory.IAddCategoryInteractor
 import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
 import mx.juanma.multitask.modules.Login.ILoginInteractor
 import mx.juanma.multitask.modules.Main.IMainInteractor
@@ -28,5 +29,9 @@ object Injector: IProviders {
 
     override fun provideMainInteractor(): IMainInteractor {
         return MainInteractorMock()
+    }
+
+    override fun provideAddCategoryInteractor(): IAddCategoryInteractor {
+        return AddCategoryInteractorMock()
     }
 }

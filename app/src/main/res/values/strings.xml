@@ -31,4 +31,6 @@
     <string name="category">Category</string>
     <string name="template">Template</string>
     <string name="new_category">New Category</string>
+    <string name="error_category_required">The category field is required</string>
+    <string name="error_expired_session">Session Expired</string>
 </resources>
