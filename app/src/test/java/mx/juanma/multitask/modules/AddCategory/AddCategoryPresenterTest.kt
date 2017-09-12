@@ -17,6 +17,12 @@ import org.mockito.MockitoAnnotations
  */
 class AddCategoryPresenterTest {
 
+    private fun <T> any(): T {
+        Mockito.any<T>()
+        return uninitialized()
+    }
+    private fun <T> uninitialized(): T = null as T
+
     @Mock
     lateinit var mView: IAddCategoryView
 
@@ -54,7 +60,7 @@ class AddCategoryPresenterTest {
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(Category(), captor.capture())
+        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
         captor.value.onSessionExpired()
         Mockito.verify(mView).dismissProgressDialog()
