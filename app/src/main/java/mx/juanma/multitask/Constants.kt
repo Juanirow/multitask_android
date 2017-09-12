@@ -15,4 +15,6 @@ object Constants {
     @JvmStatic val REQUEST_CREATE_ACCOUNT_ACTIVITY = 300
     @JvmStatic val REQUEST_CATEGORIES = 400
     @JvmStatic val REQUEST_ADD_CATEGORY = 500
+
+    @JvmStatic val RESULT_EXPIRED_SESSION = 10
 }

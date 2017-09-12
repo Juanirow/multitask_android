@@ -1,12 +1,15 @@
 package mx.juanma.multitask.modules.AddCategory
 
+import android.app.Activity
 import android.app.Fragment
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_add_category.*
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
@@ -71,12 +74,20 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
     }
 
     override fun showDialogExpiredSession() {
+        DialogCreator.showError(this.activity,
+                R.string.error_expired_session,
+                null,
+                DialogInterface.OnDismissListener { this.mPresenter?.onExpiredSessionConfirm() })
     }
 
     override fun closeActivityWithExpiredSessionCode() {
+        this.activity.setResult(Constants.RESULT_EXPIRED_SESSION)
+        this.activity.finish()
     }
 
     override fun closeActivityWithOkResult() {
+        this.activity.setResult(Activity.RESULT_OK)
+        this.activity.finish()
     }
 
     override fun showInternalServerError() {
