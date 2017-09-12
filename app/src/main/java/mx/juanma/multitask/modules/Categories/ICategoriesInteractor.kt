@@ -10,6 +10,8 @@ import mx.juanma.multitask.models.Category
  */
 interface ICategoriesInteractor {
 
+    fun getUserCategories(callback: ICategoriesInteractor.Callback?)
+
     interface Callback {
         fun onExpiredSession()
         fun onLoadCategories(categories: ArrayList<Category>)

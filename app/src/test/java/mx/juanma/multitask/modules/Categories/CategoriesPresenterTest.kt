@@ -42,7 +42,7 @@ class CategoriesPresenterTest {
         val captor = ArgumentCaptor.forClass(ICategoriesInteractor.Callback::class.java)
         this.mPresenter.loadCategories()
         Mockito.verify(mView).showProgressDialog()
-        Mockito.verify(mView).getUserCategories(captor.capture())
+        Mockito.verify(mInteractor).getUserCategories(captor.capture())
 
         captor.value.onExpiredSession()
         Mockito.verify(mView).closeProgressDialog()
@@ -54,7 +54,7 @@ class CategoriesPresenterTest {
         val captor = ArgumentCaptor.forClass(ICategoriesInteractor.Callback::class.java)
         this.mPresenter.loadCategories()
         Mockito.verify(mView).showProgressDialog()
-        Mockito.verify(mView).getUserCategories(captor.capture())
+        Mockito.verify(mInteractor).getUserCategories(captor.capture())
 
         val categories = ArrayList<Category>()
         captor.value.onLoadCategories(categories)
@@ -68,7 +68,7 @@ class CategoriesPresenterTest {
         val captor = ArgumentCaptor.forClass(ICategoriesInteractor.Callback::class.java)
         this.mPresenter.loadCategories()
         Mockito.verify(mView).showProgressDialog()
-        Mockito.verify(mView).getUserCategories(captor.capture())
+        Mockito.verify(mInteractor).getUserCategories(captor.capture())
 
         val categories = ArrayList<Category>()
         categories.add(Category("Deporte"))

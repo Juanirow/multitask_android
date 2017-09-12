@@ -10,7 +10,6 @@ import mx.juanma.multitask.models.Category
  */
 interface ICategoriesView {
     fun showProgressDialog()
-    fun getUserCategories(listener: ICategoriesInteractor.Callback?)
     fun closeProgressDialog()
     fun closeActivityWithExpiredSessionResult()
     fun showEmptyListDialog()
