@@ -6,9 +6,14 @@ package mx.juanma.multitask.modules.AddCategory
  * Nakva
  * linanjm90@gmail.com
  */
-class AddCategoryPresenter(mView: IAddCategoryView, mInteractor: IAddCategoryInteractor) {
+class AddCategoryPresenter(var mView: IAddCategoryView,
+                           var mInteractor: IAddCategoryInteractor) {
 
     fun onClickSave() {
+        val email = this.mView.getName()
+        if(email == null || email.isEmpty()) {
+            this.mView.showNameEmptyError()
+        }
     }
 
     fun onExpiredSessionConfirm() {
