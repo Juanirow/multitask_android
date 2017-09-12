@@ -1,6 +1,7 @@
 package mx.juanma.multitask.modules.AddCategory
 
 import android.app.Fragment
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_add_category.*
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
+import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.helpers.ViewHelper
 
 
@@ -19,6 +21,7 @@ import mx.juanma.multitask.helpers.ViewHelper
 class AddCategoryFragment : Fragment(), IAddCategoryView {
 
     private var mPresenter: AddCategoryPresenter? = null
+    private var mProgressDialog: ProgressDialog? = null
 
     companion object {
         @JvmStatic fun getInstance(): AddCategoryFragment {
@@ -27,7 +30,6 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
             return fragment
         }
     }
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater?.inflate(R.layout.fragment_add_category, container, false)
@@ -57,9 +59,15 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
     }
 
     override fun showProgressView() {
+        if(this.mProgressDialog == null) {
+            this.mProgressDialog = DialogCreator.createProgressDialog(this.activity,
+                    R.string.loading, R.string.adding_category)
+        }
+        this.mProgressDialog?.show()
     }
 
     override fun dismissProgressDialog() {
+        this.mProgressDialog?.dismiss()
     }
 
     override fun showDialogExpiredSession() {
@@ -72,5 +80,6 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
     }
 
     override fun showInternalServerError() {
+        DialogCreator.showError(this.activity, R.string.error_server_generic)
     }
 }

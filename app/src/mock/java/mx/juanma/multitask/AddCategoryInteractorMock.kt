@@ -13,7 +13,7 @@ class AddCategoryInteractorMock: IAddCategoryInteractor {
 
     override fun addNewCategory(category: Category, callback: IAddCategoryInteractor.Callback?) {
         var name = ""
-        if(category.name == null) {
+        if(category.name != null) {
            name = category.name!!
         }
         when(name) {
