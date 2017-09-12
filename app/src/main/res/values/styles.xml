@@ -29,6 +29,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="LabelField">
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="LabelError" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">#ff0000</item>

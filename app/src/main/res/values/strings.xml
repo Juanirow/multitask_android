@@ -28,4 +28,7 @@
     <string name="categories">Categories</string>
     <string name="no_saved_categories">You do not have saved categories.
         Click in the + button to add your first category</string>
+    <string name="category">Category</string>
+    <string name="template">Template</string>
+    <string name="new_category">New Category</string>
 </resources>
