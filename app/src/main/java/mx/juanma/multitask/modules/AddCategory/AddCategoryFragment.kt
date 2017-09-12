@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_add_category.*
 import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
+import mx.juanma.multitask.helpers.ViewHelper
 
 
 /**
@@ -51,6 +52,8 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
     }
 
     override fun showNameEmptyError() {
+        ViewHelper.setTextInputLayoutError(R.string.error_category_required,
+                this.labelName, this.activity)
     }
 
     override fun showProgressView() {
