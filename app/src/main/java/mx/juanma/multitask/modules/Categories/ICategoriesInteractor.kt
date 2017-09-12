@@ -15,6 +15,5 @@ interface ICategoriesInteractor {
     interface Callback {
         fun onExpiredSession()
         fun onLoadCategories(categories: ArrayList<Category>)
-
     }
 }

@@ -79,4 +79,10 @@ class CategoriesPresenterTest {
         Mockito.verify(mView).showListView()
         Mockito.verify(mView).loadCategoriesList(categories)
     }
+
+    @Test
+    fun shouldLaunchAddCategoryActivity() {
+        this.mPresenter.onClickAdd()
+        Mockito.verify(mView).launchActivityWithCode(Mockito.anyInt())
+    }
 }

@@ -1,5 +1,7 @@
 package mx.juanma.multitask.modules.Categories
 
+import android.app.Activity
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.models.Category
 
 
@@ -17,6 +19,18 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     fun loadCategories() {
         this.mView.showProgressDialog()
         this.mInteractor.getUserCategories(this)
+    }
+
+    fun onClickAdd() {
+        this.mView.launchActivityWithCode(Constants.REQUEST_ADD_CATEGORY)
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int) {
+        if(requestCode == Constants.REQUEST_ADD_CATEGORY) {
+            if(resultCode == Activity.RESULT_OK) {
+                this.loadCategories()
+            }
+        }
     }
 
     /**

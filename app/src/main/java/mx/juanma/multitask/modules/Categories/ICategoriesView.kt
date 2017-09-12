@@ -16,5 +16,6 @@ interface ICategoriesView {
     fun hideListView()
     fun hideEmptyListDialog()
     fun showListView()
-    fun  loadCategoriesList(categories: ArrayList<Category>)
+    fun loadCategoriesList(categories: ArrayList<Category>)
+    fun launchActivityWithCode(activityCode: Int)
 }
