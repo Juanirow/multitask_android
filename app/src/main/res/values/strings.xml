@@ -26,4 +26,6 @@
     <string name="creating_account">Creating Account</string>
     <string name="logout">Logout</string>
     <string name="categories">Categories</string>
+    <string name="no_saved_categories">You do not have saved categories.
+        Click in the + button to add your first category</string>
 </resources>
