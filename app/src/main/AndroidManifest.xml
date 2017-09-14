@@ -32,6 +32,7 @@
             android:screenOrientation="portrait" />
 
         <activity android:name=".modules.AddCategory.AddCategoryActivity"
+            android:label="@string/new_category"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".modules.Categories.CategoriesActivity"
