@@ -40,4 +40,10 @@ class MainPresenterTest {
         Mockito.verify(this.mInteractor).logout()
         Mockito.verify(this.mView).finishActivityWithOkResult()
     }
+
+    @Test
+    fun shouldLaunchCategoriesActivity() {
+        mPresenter.onClickCategories()
+        Mockito.verify(this.mView).launchCategoriesActivity()
+    }
 }
