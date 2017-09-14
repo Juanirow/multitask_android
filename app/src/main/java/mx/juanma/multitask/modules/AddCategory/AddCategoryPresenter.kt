@@ -21,8 +21,9 @@ class AddCategoryPresenter(var mView: IAddCategoryView,
             this.mView.showNameEmptyError()
             return
         }
+        val time = this.mView.getDefaultTime()
         this.mView.showProgressView()
-        val category = Category(name)
+        val category = Category(name, time)
         this.mInteractor.addNewCategory(category, this)
 
     }

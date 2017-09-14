@@ -25,6 +25,7 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
 
     private var mPresenter: AddCategoryPresenter? = null
     private var mProgressDialog: ProgressDialog? = null
+    private var defaultsTimeList: IntArray? = null
 
     companion object {
         @JvmStatic fun getInstance(): AddCategoryFragment {
@@ -42,6 +43,7 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        this.defaultsTimeList = resources.getIntArray(R.array.time_templates_seconds)
         this.mPresenter = AddCategoryPresenter(this, Injector.provideAddCategoryInteractor())
         this.fabOk.setOnClickListener { this.mPresenter?.onClickSave() }
     }
@@ -54,6 +56,12 @@ class AddCategoryFragment : Fragment(), IAddCategoryView {
         this.labelName.error = null
         this.labelName.isErrorEnabled = false
         return this.inputName.text.toString().trim()
+    }
+
+    override fun getDefaultTime(): Int {
+        val currentIndex = this.spinnerTimeTemplate.selectedItemPosition
+        // return default one hour or the template time
+        return if(this.defaultsTimeList != null) this.defaultsTimeList!![currentIndex] else 60
     }
 
     override fun showNameEmptyError() {

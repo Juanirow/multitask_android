@@ -16,4 +16,5 @@ interface IAddCategoryView {
     fun closeActivityWithExpiredSessionCode()
     fun closeActivityWithOkResult()
     fun showInternalServerError()
+    fun getDefaultTime(): Int
 }
