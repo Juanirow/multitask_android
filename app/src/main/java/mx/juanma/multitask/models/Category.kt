@@ -6,5 +6,6 @@ package mx.juanma.multitask.models
  * Nakva
  * linanjm90@gmail.com
  */
-class Category(var name: String? = null) {
+class Category(var name: String? = null,
+               var seconds: Int? = null) {
 }
