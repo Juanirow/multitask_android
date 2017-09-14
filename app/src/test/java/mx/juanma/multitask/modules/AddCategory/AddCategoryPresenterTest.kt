@@ -56,9 +56,11 @@ class AddCategoryPresenterTest {
     fun shouldShowExpiredSession() {
         val captor = ArgumentCaptor.forClass(IAddCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
+        Mockito.verify(this.mView).getDefaultTime()
         Mockito.verify(mView).showProgressView()
         Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
@@ -77,9 +79,11 @@ class AddCategoryPresenterTest {
     fun shouldReturnOkResultAfterAddNewCategory() {
         val captor = ArgumentCaptor.forClass(IAddCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
+        Mockito.verify(this.mView).getDefaultTime()
         Mockito.verify(mView).showProgressView()
         Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
@@ -92,9 +96,11 @@ class AddCategoryPresenterTest {
     fun shouldShowInternalServerError() {
         val captor = ArgumentCaptor.forClass(IAddCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
+        Mockito.verify(this.mView).getDefaultTime()
         Mockito.verify(mView).showProgressView()
         Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
 
