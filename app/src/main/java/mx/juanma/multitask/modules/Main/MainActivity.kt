@@ -1,5 +1,6 @@
 package mx.juanma.multitask.modules.Main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -12,9 +13,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.Injector
 
 import mx.juanma.multitask.R
+import mx.juanma.multitask.modules.Categories.CategoriesActivity
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, IMainView {
 
@@ -79,6 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when(id) {
             R.id.nav_logout -> { mPresenter?.onClickLogout() }
+            R.id.nav_categories -> { mPresenter?.onClickCategories() }
         }
 
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
@@ -93,5 +97,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun finishActivityWithOkResult() {
         this.setResult(android.app.Activity.RESULT_OK)
         finish()
+    }
+
+    override fun launchCategoriesActivity() {
+        val intent = Intent(this, CategoriesActivity::class.java)
+        startActivityForResult(intent, Constants.REQUEST_CATEGORIES)
     }
 }

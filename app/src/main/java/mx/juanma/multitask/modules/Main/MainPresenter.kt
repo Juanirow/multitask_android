@@ -12,4 +12,8 @@ class MainPresenter(var mView: IMainView,var mInteractor: IMainInteractor) {
         mInteractor.logout()
         mView.finishActivityWithOkResult()
     }
+
+    fun onClickCategories() {
+        mView.launchCategoriesActivity()
+    }
 }

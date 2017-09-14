@@ -8,4 +8,5 @@ package mx.juanma.multitask.modules.Main
  */
 interface IMainView {
     fun finishActivityWithOkResult()
+    fun launchCategoriesActivity()
 }
