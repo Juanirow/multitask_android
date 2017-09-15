@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/labelCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Deportes" />
+
+        <TextView
+            android:id="@+id/labelDefaultTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelCategory"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            tools:text="Default Time:" />
+
+        <TextView
+            android:id="@+id/labelDefaultTimeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelCategory"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/labelDefaultTime"
+            android:padding="4dp"
+            android:textColor="@color/textColorPrimary"
+            tools:text="Default Time:" />
+
+        <ImageView
+            android:id="@+id/imageExpand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/labelDefaultTime"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/labelCategory"
+            android:contentDescription="@string/app_name"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:src="@drawable/ic_action_expand_more_light" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/imageEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:src="@drawable/ic_action_edit_dark" />
+
+        <ImageView
+            android:id="@+id/imageDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorCancel"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:src="@drawable/ic_action_delete_dark" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
