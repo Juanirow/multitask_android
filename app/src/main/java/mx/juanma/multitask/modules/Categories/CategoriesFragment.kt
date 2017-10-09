@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_categories.*
 import mx.juanma.multitask.Constants
+import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.models.Category
@@ -25,6 +26,7 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
 
     private var mProgressDialog: ProgressDialog? = null
     private var mAdapter: CategoriesAdapter? = null
+    lateinit var mPresenter: CategoriesPresenter
 
     companion object {
         @JvmStatic fun getInstance(): CategoriesFragment {
@@ -48,9 +50,13 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
             startActivityForResult(intent, Constants.REQUEST_ADD_CATEGORY)
         }
 
+
         this.mAdapter = CategoriesAdapter(this.activity, this)
         this.listView.adapter = this.mAdapter
         this.listView.layoutManager = LinearLayoutManager(this.activity)
+
+        this.mPresenter = CategoriesPresenter(this, Injector.categoriesInteractor())
+        this.mPresenter.loadCategories()
     }
 
     /**
