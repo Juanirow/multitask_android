@@ -8,5 +8,5 @@ package mx.juanma.multitask.models
  */
 class Category(var name: String? = null,
                var seconds: Int? = null,
-               var id: String) {
+               var id: String = "") {
 }

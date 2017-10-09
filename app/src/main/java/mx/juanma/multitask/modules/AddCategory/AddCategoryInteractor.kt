@@ -22,6 +22,7 @@ class AddCategoryInteractor: IAddCategoryInteractor {
         }
         val userId = user.uid
         val key = reference.child(userId).push().key
+        category.id = key
         reference.child(userId).child(key).setValue(category, DatabaseReference.CompletionListener
                 { databaseError, databaseReference ->
                     if (databaseError != null) {
