@@ -24,7 +24,7 @@ class CategoriesInteractor: ICategoriesInteractor {
             return
         }
         val ref = FirebaseDatabase.getInstance().getReference("category/${user.uid}")
-        ref.addListenerForSingleValueEvent(object: ValueEventListener() {
+        ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
                 Log.d(TAG, "onCancelled: ")
             }
