@@ -4,6 +4,7 @@ import android.app.Fragment
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +21,10 @@ import mx.juanma.multitask.modules.AddCategory.AddCategoryActivity
  * Nakva
  * linanjm90@gmail.com
  */
-class CategoriesFragment: Fragment(), ICategoriesView {
+class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListener {
 
     private var mProgressDialog: ProgressDialog? = null
+    private var mAdapter: CategoriesAdapter? = null
 
     companion object {
         @JvmStatic fun getInstance(): CategoriesFragment {
@@ -45,7 +47,15 @@ class CategoriesFragment: Fragment(), ICategoriesView {
             val intent = Intent(this.activity, AddCategoryActivity::class.java)
             startActivityForResult(intent, Constants.REQUEST_ADD_CATEGORY)
         }
+
+        this.mAdapter = CategoriesAdapter(this.activity, this)
+        this.listView.adapter = this.mAdapter
+        this.listView.layoutManager = LinearLayoutManager(this.activity)
     }
+
+    /**
+     * View Contract
+     */
 
     override fun showProgressDialog() {
         if(this.mProgressDialog == null) {
@@ -81,11 +91,21 @@ class CategoriesFragment: Fragment(), ICategoriesView {
     }
 
     override fun loadCategoriesList(categories: ArrayList<Category>) {
-        //TODO
+        this.mAdapter?.updateCategories(categories)
     }
 
     override fun launchActivityWithCode(activityCode: Int) {
         val intent = Intent(this.activity, AddCategoryActivity::class.java)
         startActivityForResult(intent, activityCode)
+    }
+
+    /**
+     * CATEGORIES LIST ITEM LISTENER
+     */
+
+    override fun onClickEditItem(id: String) {
+    }
+
+    override fun onClickDeleteItem(id: String) {
     }
 }

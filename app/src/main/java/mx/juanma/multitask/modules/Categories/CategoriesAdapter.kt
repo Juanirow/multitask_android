@@ -13,10 +13,9 @@ import mx.juanma.multitask.models.Category
  * Nakva
  * linanjm90@gmail.com
  */
-class CategoriesAdapter(var activity: Activity, listener: ICategoryItemActionListener): RecyclerView.Adapter<CategoryViewHolder>() {
+class CategoriesAdapter(var activity: Activity, var listener: ICategoryItemActionListener): RecyclerView.Adapter<CategoryViewHolder>() {
 
-    var categories: Array<Category> = emptyArray()
-    var listener: ICategoryItemActionListener? = null
+    var categories = ArrayList<Category>()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CategoryViewHolder {
         val view = LayoutInflater.from(activity).inflate(R.layout.item_category, parent, false)
@@ -28,9 +27,14 @@ class CategoriesAdapter(var activity: Activity, listener: ICategoryItemActionLis
         holder?.labelCategory?.text = category.name
         holder?.labelDefaultTimeValue?.text = "${category.seconds}"
 
-        holder?.imageViewEdit?.setOnClickListener { this.listener?.onClickEditItem(category.id) }
-        holder?.imageViewDelete?.setOnClickListener { this.listener?.onClickDeleteItem(category.id) }
+        holder?.imageViewEdit?.setOnClickListener { this.listener.onClickEditItem(category.id) }
+        holder?.imageViewDelete?.setOnClickListener { this.listener.onClickDeleteItem(category.id) }
     }
 
     override fun getItemCount(): Int = this.categories.size
+
+    fun updateCategories(categories: ArrayList<Category>) {
+        this.categories = categories
+        this.notifyDataSetChanged()
+    }
 }
