@@ -15,6 +15,8 @@ import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.models.Category
 import mx.juanma.multitask.modules.AddCategory.AddCategoryActivity
+import mx.juanma.multitask.modules.Categories.CategoryItem.CategoriesAdapter
+import mx.juanma.multitask.modules.Categories.CategoryItem.ICategoryItemActionListener
 
 
 /**

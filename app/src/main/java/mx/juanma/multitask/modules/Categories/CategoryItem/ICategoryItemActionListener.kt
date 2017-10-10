@@ -1,4 +1,4 @@
-package mx.juanma.multitask.modules.Categories
+package mx.juanma.multitask.modules.Categories.CategoryItem
 
 
 /**
