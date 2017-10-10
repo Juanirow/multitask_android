@@ -195,4 +195,17 @@ object DialogCreator {
         alert.setOnDismissListener(onDismissListener)
         alert.show()
     }
+
+    fun showConfirmDialog(context: Context, titleId: Int, message: String,
+                          onCLickListener: DialogInterface.OnClickListener?,
+                          onDismissListener: DialogInterface.OnDismissListener?) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(titleId)
+        builder.setPositiveButton(R.string.ok, onCLickListener)
+        builder.setMessage(message)
+
+        val alert = builder.create()
+        alert.setOnDismissListener(onDismissListener)
+        alert.show()
+    }
 }
