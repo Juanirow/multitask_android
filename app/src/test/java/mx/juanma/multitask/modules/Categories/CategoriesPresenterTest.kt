@@ -5,8 +5,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
-import org.mockito.Matchers.any
-import org.mockito.Matchers.anyString
+import org.mockito.Matchers.*
 import org.mockito.Mock
 import org.mockito.Mockito
 
@@ -98,9 +97,9 @@ class CategoriesPresenterTest {
     fun reloadListAfterDeleteItem() {
         val captor = ArgumentCaptor.forClass(ICategoriesInteractor.DeleteCallback::class.java)
 
-        mPresenter.confirmDeleteCategory(anyString())
+        mPresenter.confirmDeleteCategory("asd")
         Mockito.verify(mView).showProgressDialogDeleteItem()
-        Mockito.verify(mInteractor).onDeleteCategory(anyString(), captor.capture())
+        Mockito.verify(mInteractor).onDeleteCategory(Mockito.anyString(), captor.capture())
 
         captor.value.onDeleteSuccess()
         Mockito.verify(this.mView).closeProgressDialog()
