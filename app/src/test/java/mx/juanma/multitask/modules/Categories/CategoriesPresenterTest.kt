@@ -110,7 +110,7 @@ class CategoriesPresenterTest {
     fun closeSessionAfterDeleteItemError() {
         val captor = ArgumentCaptor.forClass(ICategoriesInteractor.DeleteCallback::class.java)
 
-        mPresenter.confirmDeleteCategory(anyString())
+        mPresenter.confirmDeleteCategory("asd")
         Mockito.verify(mView).showProgressDialogDeleteItem()
         Mockito.verify(mInteractor).onDeleteCategory(anyString(), captor.capture())
 

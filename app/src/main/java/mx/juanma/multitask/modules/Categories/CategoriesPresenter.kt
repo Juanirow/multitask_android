@@ -69,7 +69,8 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
      */
 
     override fun onExpiredSessionDuringDelete() {
-
+        this.mView.closeProgressDialog()
+        this.mView.closeActivityWithExpiredSessionResult()
     }
 
     override fun onDeleteSuccess() {
