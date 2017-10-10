@@ -61,6 +61,11 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         this.mPresenter.loadCategories()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        this.mPresenter.onActivityResult(requestCode, resultCode)
+    }
+
     /**
      * View Contract
      */

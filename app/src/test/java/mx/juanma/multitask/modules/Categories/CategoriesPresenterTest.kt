@@ -85,4 +85,5 @@ class CategoriesPresenterTest {
         this.mPresenter.onClickAdd()
         Mockito.verify(mView).launchActivityWithCode(Mockito.anyInt())
     }
+
 }
