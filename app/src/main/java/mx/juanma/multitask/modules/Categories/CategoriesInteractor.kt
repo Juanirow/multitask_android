@@ -2,10 +2,7 @@ package mx.juanma.multitask.modules.Categories
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import mx.juanma.multitask.models.Category
 
 
@@ -37,6 +34,13 @@ class CategoriesInteractor: ICategoriesInteractor {
         })
     }
 
-    override fun onDeleteCategory(anyString: String?, callback: ICategoriesInteractor.DeleteCallback?) {
+    override fun onDeleteCategory(id: String?, callback: ICategoriesInteractor.DeleteCallback?) {
+        val user = FirebaseAuth.getInstance().currentUser
+        if(user == null) {
+            callback?.onExpiredSessionDuringDelete()
+            return
+        }
+        val ref = FirebaseDatabase.getInstance().getReference("category/${user.uid}/$id")
+        ref.removeValue { _, _ -> callback?.onDeleteSuccess() }
     }
 }
