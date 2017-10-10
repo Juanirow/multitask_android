@@ -33,6 +33,11 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
         }
     }
 
+    fun onDeleteCategoryClick(id: String, name: String) {
+    }
+
+    fun confirmDeleteCategory(id: String) {}
+
     /**
      * ICategoriesInteractorCallback
      */
@@ -54,4 +59,6 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
             this.mView.loadCategoriesList(categories)
         }
     }
+
+
 }

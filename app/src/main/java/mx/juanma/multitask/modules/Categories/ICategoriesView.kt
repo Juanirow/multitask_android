@@ -18,4 +18,7 @@ interface ICategoriesView {
     fun showListView()
     fun loadCategoriesList(categories: ArrayList<Category>)
     fun launchActivityWithCode(activityCode: Int)
+    fun showDeleteConfirmationDialog(id: String, name: String)
+    fun showProgressDialogDeleteItem()
+    fun onDeleteCategorySuccess()
 }
