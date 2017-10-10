@@ -29,8 +29,12 @@ class CategoriesAdapter(var activity: Activity, var listener: ICategoryItemActio
         holder?.labelDefaultTimeValue?.text = "${category.seconds}"
         this.setHolderOptions(holder, category)
 
-        holder?.imageViewEdit?.setOnClickListener { this.listener.onClickEditItem(category.id) }
-        holder?.imageViewDelete?.setOnClickListener { this.listener.onClickDeleteItem(category.id) }
+        holder?.imageViewEdit?.setOnClickListener {
+            this.listener.onClickEditItem(category.id, category.name!!)
+        }
+        holder?.imageViewDelete?.setOnClickListener {
+            this.listener.onClickDeleteItem(category.id, category.name!!)
+        }
         holder?.imageViewExpand?.setOnClickListener {
             category.optionsVisible = !category.optionsVisible
             this.setHolderOptions(holder, category)

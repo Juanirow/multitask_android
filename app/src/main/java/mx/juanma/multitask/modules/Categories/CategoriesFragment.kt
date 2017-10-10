@@ -111,9 +111,9 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
      * CATEGORIES LIST ITEM LISTENER
      */
 
-    override fun onClickEditItem(id: String) {
+    override fun onClickEditItem(id: String, name: String) {
     }
 
-    override fun onClickDeleteItem(id: String) {
+    override fun onClickDeleteItem(id: String, name: String) {
     }
 }
