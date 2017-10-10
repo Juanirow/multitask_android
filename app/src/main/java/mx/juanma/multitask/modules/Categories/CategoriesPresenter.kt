@@ -34,6 +34,7 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     }
 
     fun onDeleteCategoryClick(id: String, name: String) {
+        this.mView.showDeleteConfirmationDialog(id, name)
     }
 
     fun confirmDeleteCategory(id: String) {}

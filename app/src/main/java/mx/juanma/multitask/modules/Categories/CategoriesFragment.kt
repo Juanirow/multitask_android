@@ -112,6 +112,15 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         startActivityForResult(intent, activityCode)
     }
 
+    override fun showDeleteConfirmationDialog(id: String, name: String) {
+    }
+
+    override fun showProgressDialogDeleteItem() {
+    }
+
+    override fun onDeleteCategorySuccess() {
+    }
+
     /**
      * CATEGORIES LIST ITEM LISTENER
      */

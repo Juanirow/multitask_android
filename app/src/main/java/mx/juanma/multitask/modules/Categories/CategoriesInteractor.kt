@@ -36,4 +36,7 @@ class CategoriesInteractor: ICategoriesInteractor {
             }
         })
     }
+
+    override fun onDeleteCategory(anyString: String?, callback: ICategoriesInteractor.DeleteCallback?) {
+    }
 }
