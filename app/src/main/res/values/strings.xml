@@ -37,4 +37,7 @@
     <string name="adding_category">Adding Category</string>
     <string name="loading_categories">Loading Categories</string>
     <string name="default_time">Default Time:</string>
+    <string name="removing_category">Removing Category</string>
+    <string name="removing">Removing</string>
+    <string name="removing_message">Do you really want to remove the %s category?</string>
 </resources>

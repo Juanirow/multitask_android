@@ -5,6 +5,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
+import org.mockito.Matchers.*
 import org.mockito.Mock
 import org.mockito.Mockito
 
@@ -84,5 +85,37 @@ class CategoriesPresenterTest {
     fun shouldLaunchAddCategoryActivity() {
         this.mPresenter.onClickAdd()
         Mockito.verify(mView).launchActivityWithCode(Mockito.anyInt())
+    }
+
+    @Test
+    fun shouldShowDialogToConfirmDeleteCategory() {
+        mPresenter.onDeleteCategoryClick(anyString(), anyString())
+        Mockito.verify(mView).showDeleteConfirmationDialog(anyString(), anyString())
+    }
+
+    @Test
+    fun reloadListAfterDeleteItem() {
+        val captor = ArgumentCaptor.forClass(ICategoriesInteractor.DeleteCallback::class.java)
+
+        mPresenter.confirmDeleteCategory("asd")
+        Mockito.verify(mView).showProgressDialogDeleteItem()
+        Mockito.verify(mInteractor).onDeleteCategory(Mockito.anyString(), captor.capture())
+
+        captor.value.onDeleteSuccess()
+        Mockito.verify(this.mView).closeProgressDialog()
+        Mockito.verify(this.mView).onDeleteCategorySuccess()
+    }
+
+    @Test
+    fun closeSessionAfterDeleteItemError() {
+        val captor = ArgumentCaptor.forClass(ICategoriesInteractor.DeleteCallback::class.java)
+
+        mPresenter.confirmDeleteCategory("asd")
+        Mockito.verify(mView).showProgressDialogDeleteItem()
+        Mockito.verify(mInteractor).onDeleteCategory(anyString(), captor.capture())
+
+        captor.value.onExpiredSessionDuringDelete()
+        Mockito.verify(this.mView).closeProgressDialog()
+        Mockito.verify(mView).closeActivityWithExpiredSessionResult()
     }
 }

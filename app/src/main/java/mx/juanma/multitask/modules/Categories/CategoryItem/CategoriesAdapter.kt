@@ -1,8 +1,9 @@
-package mx.juanma.multitask.modules.Categories
+package mx.juanma.multitask.modules.Categories.CategoryItem
 
 import android.app.Activity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import mx.juanma.multitask.R
 import mx.juanma.multitask.models.Category
@@ -26,9 +27,29 @@ class CategoriesAdapter(var activity: Activity, var listener: ICategoryItemActio
         val category = this.categories[position]
         holder?.labelCategory?.text = category.name
         holder?.labelDefaultTimeValue?.text = "${category.seconds}"
+        this.setHolderOptions(holder, category)
 
-        holder?.imageViewEdit?.setOnClickListener { this.listener.onClickEditItem(category.id) }
-        holder?.imageViewDelete?.setOnClickListener { this.listener.onClickDeleteItem(category.id) }
+        holder?.imageViewEdit?.setOnClickListener {
+            this.listener.onClickEditItem(category.id, category.name!!)
+        }
+        holder?.imageViewDelete?.setOnClickListener {
+            this.listener.onClickDeleteItem(category.id, category.name!!)
+        }
+        holder?.imageViewExpand?.setOnClickListener {
+            category.optionsVisible = !category.optionsVisible
+            this.setHolderOptions(holder, category)
+        }
+    }
+
+    private fun setHolderOptions(holder: CategoryViewHolder?, category: Category) {
+        if(category.optionsVisible) {
+            holder?.optionsContainer?.visibility = View.VISIBLE
+            holder?.imageViewExpand?.setImageResource(R.drawable.ic_action_expand_less_light)
+        }
+        else {
+            holder?.optionsContainer?.visibility = View.GONE
+            holder?.imageViewExpand?.setImageResource(R.drawable.ic_action_expand_more_light)
+        }
     }
 
     override fun getItemCount(): Int = this.categories.size

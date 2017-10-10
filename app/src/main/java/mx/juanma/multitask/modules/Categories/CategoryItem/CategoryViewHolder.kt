@@ -1,8 +1,9 @@
-package mx.juanma.multitask.modules.Categories
+package mx.juanma.multitask.modules.Categories.CategoryItem
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_category.view.*
 
@@ -20,6 +21,7 @@ class CategoryViewHolder(var view: View): RecyclerView.ViewHolder(view) {
     var imageViewExpand: ImageView? = null
     var imageViewEdit: ImageView? = null
     var imageViewDelete: ImageView? = null
+    var optionsContainer: LinearLayout? = null
 
     init {
         this.labelCategory = view.labelCategory
@@ -28,5 +30,6 @@ class CategoryViewHolder(var view: View): RecyclerView.ViewHolder(view) {
         this.imageViewExpand = view.imageExpand
         this.imageViewEdit = view.imageEdit
         this.imageViewDelete = view.imageDelete
+        this.optionsContainer = view.optionsContainer
     }
 }

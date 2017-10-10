@@ -11,7 +11,7 @@ import mx.juanma.multitask.models.Category
  * linanjm90@gmail.com
  */
 class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategoriesInteractor):
-        ICategoriesInteractor.Callback {
+        ICategoriesInteractor.Callback, ICategoriesInteractor.DeleteCallback {
 
     /**
      *  Presenter Calls
@@ -31,6 +31,15 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
                 this.loadCategories()
             }
         }
+    }
+
+    fun onDeleteCategoryClick(id: String, name: String) {
+        this.mView.showDeleteConfirmationDialog(id, name)
+    }
+
+    fun confirmDeleteCategory(id: String) {
+        this.mView.showProgressDialogDeleteItem()
+        this.mInteractor.onDeleteCategory(id, this)
     }
 
     /**
@@ -53,5 +62,19 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
             this.mView.hideEmptyListDialog()
             this.mView.loadCategoriesList(categories)
         }
+    }
+
+    /**
+     * ICategoriesInteractorDeleteCallback
+     */
+
+    override fun onExpiredSessionDuringDelete() {
+        this.mView.closeProgressDialog()
+        this.mView.closeActivityWithExpiredSessionResult()
+    }
+
+    override fun onDeleteSuccess() {
+        this.mView.closeProgressDialog()
+        this.mView.onDeleteCategorySuccess()
     }
 }

@@ -2,6 +2,7 @@ package mx.juanma.multitask.modules.Categories
 
 import android.app.Fragment
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -15,6 +16,8 @@ import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.models.Category
 import mx.juanma.multitask.modules.AddCategory.AddCategoryActivity
+import mx.juanma.multitask.modules.Categories.CategoryItem.CategoriesAdapter
+import mx.juanma.multitask.modules.Categories.CategoryItem.ICategoryItemActionListener
 
 
 /**
@@ -59,15 +62,18 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         this.mPresenter.loadCategories()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        this.mPresenter.onActivityResult(requestCode, resultCode)
+    }
+
     /**
      * View Contract
      */
 
     override fun showProgressDialog() {
-        if(this.mProgressDialog == null) {
-            this.mProgressDialog = DialogCreator.createProgressDialog(this.activity,
-                    R.string.loading, R.string.loading_categories)
-        }
+        this.mProgressDialog = DialogCreator.createProgressDialog(this.activity,
+                R.string.loading, R.string.loading_categories)
         this.mProgressDialog?.show()
     }
 
@@ -105,13 +111,33 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         startActivityForResult(intent, activityCode)
     }
 
+    override fun showDeleteConfirmationDialog(id: String, name: String) {
+        val listener = DialogInterface.OnClickListener { dialog, which ->
+            this.mPresenter.confirmDeleteCategory(id)
+        }
+        val error = this.getString(R.string.removing_message)
+        val message = String.format(error, name)
+        DialogCreator.showConfirmDialog(this.activity, R.string.removing, message, listener, null)
+    }
+
+    override fun showProgressDialogDeleteItem() {
+        this.mProgressDialog = DialogCreator.createProgressDialog(this.activity,
+                R.string.removing, R.string.removing_category)
+        this.mProgressDialog?.show()
+    }
+
+    override fun onDeleteCategorySuccess() {
+        this.mPresenter.loadCategories()
+    }
+
     /**
      * CATEGORIES LIST ITEM LISTENER
      */
 
-    override fun onClickEditItem(id: String) {
+    override fun onClickEditItem(id: String, name: String) {
     }
 
-    override fun onClickDeleteItem(id: String) {
+    override fun onClickDeleteItem(id: String, name: String) {
+        this.mPresenter.onDeleteCategoryClick(id, name)
     }
 }
