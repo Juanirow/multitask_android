@@ -18,6 +18,8 @@ import mx.juanma.multitask.models.Category
 import mx.juanma.multitask.modules.AddCategory.AddCategoryActivity
 import mx.juanma.multitask.modules.Categories.CategoryItem.CategoriesAdapter
 import mx.juanma.multitask.modules.Categories.CategoryItem.ICategoryItemActionListener
+import mx.juanma.multitask.modules.EditCategory.EditCategoryActivity
+import mx.juanma.multitask.modules.EditCategory.EditCategoryFragment
 
 
 /**
@@ -131,6 +133,9 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
     }
 
     override fun launchEditCategory(categoryId: String, requestCode: Int) {
+        val intent = Intent(this.activity, EditCategoryActivity::class.java)
+        intent.putExtra(EditCategoryFragment.EXTRA_CATEGORY_ID, categoryId)
+        startActivityForResult(intent, requestCode)
     }
 
     override fun onUpdateCategorySuccess() {

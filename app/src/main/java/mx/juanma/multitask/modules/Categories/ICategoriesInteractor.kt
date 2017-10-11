@@ -15,7 +15,6 @@ interface ICategoriesInteractor {
     interface Callback {
         fun onExpiredSession()
         fun onLoadCategories(categories: ArrayList<Category>)
-        fun onEditCategory(categoryId: String)
     }
 
     fun onDeleteCategory(id: String?, callback: ICategoriesInteractor.DeleteCallback?)

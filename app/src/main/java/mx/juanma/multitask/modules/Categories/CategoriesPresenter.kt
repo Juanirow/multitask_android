@@ -42,6 +42,11 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
         this.mInteractor.onDeleteCategory(id, this)
     }
 
+    fun onEditCategory(categoryId: String) {
+        this.mView.launchEditCategory(categoryId, Constants.REQUEST_EDIT_CATEGORY)
+
+    }
+
     /**
      * ICategoriesInteractorCallback
      */
