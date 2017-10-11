@@ -1,5 +1,7 @@
 package mx.juanma.multitask.modules.EditCategory
 
+import mx.juanma.multitask.models.Category
+
 
 /**
  * Created by Juancho on 11/10/17.
@@ -8,7 +10,11 @@ package mx.juanma.multitask.modules.EditCategory
  */
 interface IEditCategoryInteractor {
 
-    public interface Callback {
+    fun addNewCategory(category: Category, capture: IEditCategoryInteractor.Callback?)
 
+    interface Callback {
+        fun onSessionExpired()
+        fun onCategoryUpdate()
+        fun onInternalServerError()
     }
 }

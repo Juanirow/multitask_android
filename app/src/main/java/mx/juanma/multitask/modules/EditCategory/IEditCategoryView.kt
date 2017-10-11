@@ -7,4 +7,13 @@ package mx.juanma.multitask.modules.EditCategory
  * linanjm90@gmail.com
  */
 interface IEditCategoryView {
+    fun getName(): String
+    fun showNameEmptyError()
+    fun getDefaultTime(): Int
+    fun showProgressView()
+    fun dismissProgressDialog()
+    fun showDialogExpiredSession()
+    fun closeActivityWithExpiredSessionCode()
+    fun closeActivityWithOkResult()
+    fun showInternalServerError()
 }
