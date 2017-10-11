@@ -1,5 +1,7 @@
 package mx.juanma.multitask.modules.Categories
 
+import android.app.Activity
+import mx.juanma.multitask.Constants
 import mx.juanma.multitask.models.Category
 import org.junit.After
 import org.junit.Before
@@ -116,6 +118,31 @@ class CategoriesPresenterTest {
 
         captor.value.onExpiredSessionDuringDelete()
         Mockito.verify(this.mView).closeProgressDialog()
+        Mockito.verify(mView).closeActivityWithExpiredSessionResult()
+    }
+
+    @Test
+    fun shouldLaunchEditCategoryActivity() {
+        mPresenter.onEditCategory("nailhaId")
+        Mockito.verify(mView).launchEditCategory(anyString(), anyInt())
+    }
+
+    @Test
+    fun shouldReloadListAfterEditSuccess() {
+        mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY, Activity.RESULT_OK)
+        Mockito.verify(mView).onUpdateCategorySuccess()
+    }
+
+    @Test
+    fun shouldNotAction() {
+        mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY, Activity.RESULT_CANCELED)
+        Mockito.verify(mView).onUpdateCategorySuccess()
+    }
+
+    @Test
+    fun shouldCloseActivityAfterExpiredSessionResponse() {
+        mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY,
+                Constants.RESULT_EXPIRED_SESSION)
         Mockito.verify(mView).closeActivityWithExpiredSessionResult()
     }
 }
