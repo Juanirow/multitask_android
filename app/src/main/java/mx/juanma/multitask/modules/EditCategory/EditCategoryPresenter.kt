@@ -14,9 +14,13 @@ class EditCategoryPresenter(val mView: IEditCategoryView, val mInteractor: IEdit
      */
 
     fun onClickSave() {
+        val name = this.mView.getName()
+        if(name.isEmpty()) {
+            this.mView.showNameEmptyError()
+            return
+        }
     }
 
     fun onExpiredSessionConfirm() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
