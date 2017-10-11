@@ -142,7 +142,7 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
      * CATEGORIES LIST ITEM LISTENER
      */
 
-    override fun onClickEditItem(id: String, name: String) {
+    override fun onClickEditItem(id: String, name: String, seconds: Int) {
         this.mPresenter.onEditCategory(id)
     }
 
