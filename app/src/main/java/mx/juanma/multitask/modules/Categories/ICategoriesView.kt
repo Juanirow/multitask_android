@@ -22,5 +22,4 @@ interface ICategoriesView {
     fun showProgressDialogDeleteItem()
     fun onDeleteCategorySuccess()
     fun launchEditCategory(categoryId: String, requestCode: Int)
-    fun onUpdateCategorySuccess()
 }

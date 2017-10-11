@@ -128,12 +128,6 @@ class CategoriesPresenterTest {
     }
 
     @Test
-    fun shouldReloadListAfterEditSuccess() {
-        mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY, Activity.RESULT_OK)
-        Mockito.verify(mView).onUpdateCategorySuccess()
-    }
-
-    @Test
     fun shouldNotAction() {
         mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY, Activity.RESULT_CANCELED)
     }

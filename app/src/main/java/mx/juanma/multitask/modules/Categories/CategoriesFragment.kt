@@ -138,15 +138,12 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         startActivityForResult(intent, requestCode)
     }
 
-    override fun onUpdateCategorySuccess() {
-    }
-
     /**
      * CATEGORIES LIST ITEM LISTENER
      */
 
     override fun onClickEditItem(id: String, name: String) {
-
+        this.mPresenter.onEditCategory(id)
     }
 
     override fun onClickDeleteItem(id: String, name: String) {
