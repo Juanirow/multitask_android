@@ -8,6 +8,6 @@ package mx.juanma.multitask.modules.Categories.CategoryItem
  */
 interface ICategoryItemActionListener {
 
-    fun onClickEditItem(id: String, name: String)
+    fun onClickEditItem(id: String, name: String, seconds: Int)
     fun onClickDeleteItem(id: String, name: String)
 }

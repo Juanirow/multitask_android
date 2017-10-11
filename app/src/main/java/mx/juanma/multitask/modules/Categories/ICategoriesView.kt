@@ -21,4 +21,5 @@ interface ICategoriesView {
     fun showDeleteConfirmationDialog(id: String, name: String)
     fun showProgressDialogDeleteItem()
     fun onDeleteCategorySuccess()
+    fun launchEditCategory(categoryId: String, categoryName: String, seconds: Int, requestCode: Int)
 }

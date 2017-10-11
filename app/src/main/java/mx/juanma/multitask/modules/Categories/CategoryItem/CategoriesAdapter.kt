@@ -30,7 +30,7 @@ class CategoriesAdapter(var activity: Activity, var listener: ICategoryItemActio
         this.setHolderOptions(holder, category)
 
         holder?.imageViewEdit?.setOnClickListener {
-            this.listener.onClickEditItem(category.id, category.name!!)
+            this.listener.onClickEditItem(category.id, category.name!!, category.seconds!!)
         }
         holder?.imageViewDelete?.setOnClickListener {
             this.listener.onClickDeleteItem(category.id, category.name!!)

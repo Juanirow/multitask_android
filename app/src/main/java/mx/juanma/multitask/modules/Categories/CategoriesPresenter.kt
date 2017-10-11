@@ -26,7 +26,12 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int) {
-        if(requestCode == Constants.REQUEST_ADD_CATEGORY) {
+        if(resultCode == Constants.RESULT_EXPIRED_SESSION) {
+            this.mView.closeActivityWithExpiredSessionResult()
+            return
+        }
+        if(requestCode == Constants.REQUEST_ADD_CATEGORY ||
+                requestCode == Constants.REQUEST_EDIT_CATEGORY) {
             if(resultCode == Activity.RESULT_OK) {
                 this.loadCategories()
             }
@@ -40,6 +45,10 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     fun confirmDeleteCategory(id: String) {
         this.mView.showProgressDialogDeleteItem()
         this.mInteractor.onDeleteCategory(id, this)
+    }
+
+    fun onEditCategory(categoryId: String, categoryName: String, seconds: Int) {
+        this.mView.launchEditCategory(categoryId, categoryName, seconds, Constants.REQUEST_EDIT_CATEGORY)
     }
 
     /**

@@ -38,6 +38,10 @@
         <activity android:name=".modules.Categories.CategoriesActivity"
             android:label="@string/categories"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".modules.EditCategory.EditCategoryActivity"
+            android:label="@string/edit_category"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
