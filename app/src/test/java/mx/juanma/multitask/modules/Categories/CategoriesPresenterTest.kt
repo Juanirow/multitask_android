@@ -136,7 +136,6 @@ class CategoriesPresenterTest {
     @Test
     fun shouldNotAction() {
         mPresenter.onActivityResult(Constants.REQUEST_EDIT_CATEGORY, Activity.RESULT_CANCELED)
-        Mockito.verify(mView).onUpdateCategorySuccess()
     }
 
     @Test

@@ -26,7 +26,12 @@ class CategoriesPresenter(var mView: ICategoriesView, var mInteractor: ICategori
     }
 
     fun onActivityResult(requestCode: Int, resultCode: Int) {
-        if(requestCode == Constants.REQUEST_ADD_CATEGORY) {
+        if(resultCode == Constants.RESULT_EXPIRED_SESSION) {
+            this.mView.closeActivityWithExpiredSessionResult()
+            return
+        }
+        if(requestCode == Constants.REQUEST_ADD_CATEGORY ||
+                requestCode == Constants.REQUEST_EDIT_CATEGORY) {
             if(resultCode == Activity.RESULT_OK) {
                 this.loadCategories()
             }
