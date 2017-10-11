@@ -30,6 +30,7 @@ class EditCategoryPresenter(val mView: IEditCategoryView, val mInteractor: IEdit
     }
 
     fun onExpiredSessionConfirm() {
+        this.mView.closeActivityWithExpiredSessionCode()
     }
 
     /**
