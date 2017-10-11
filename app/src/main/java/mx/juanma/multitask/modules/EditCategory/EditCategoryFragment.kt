@@ -30,6 +30,9 @@ class EditCategoryFragment: Fragment(), IEditCategoryView {
 
     companion object {
         @JvmStatic val EXTRA_CATEGORY_ID = "_categoryId"
+        @JvmStatic val EXTRA_CATEGORY_NAME = "_name"
+        @JvmStatic val EXTRA_CATEGORY_SECONDS = "_seconds"
+
         @JvmStatic fun getInstance(): EditCategoryFragment {
             val fragment = EditCategoryFragment()
             fragment.retainInstance = true

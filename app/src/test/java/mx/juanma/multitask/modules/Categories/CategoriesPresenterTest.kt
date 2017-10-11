@@ -123,8 +123,8 @@ class CategoriesPresenterTest {
 
     @Test
     fun shouldLaunchEditCategoryActivity() {
-        mPresenter.onEditCategory("nailhaId")
-        Mockito.verify(mView).launchEditCategory(anyString(), anyInt())
+        mPresenter.onEditCategory("nailhaId", "name", 60)
+        Mockito.verify(mView).launchEditCategory(anyString(), anyString(), anyInt(), anyInt())
     }
 
     @Test

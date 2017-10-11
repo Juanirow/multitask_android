@@ -132,9 +132,12 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
         this.mPresenter.loadCategories()
     }
 
-    override fun launchEditCategory(categoryId: String, requestCode: Int) {
+    override fun launchEditCategory(categoryId: String, categoryName: String, seconds: Int,
+                                    requestCode: Int) {
         val intent = Intent(this.activity, EditCategoryActivity::class.java)
         intent.putExtra(EditCategoryFragment.EXTRA_CATEGORY_ID, categoryId)
+        intent.putExtra(EditCategoryFragment.EXTRA_CATEGORY_NAME, categoryName)
+        intent.putExtra(EditCategoryFragment.EXTRA_CATEGORY_SECONDS, seconds)
         startActivityForResult(intent, requestCode)
     }
 
@@ -143,7 +146,7 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
      */
 
     override fun onClickEditItem(id: String, name: String, seconds: Int) {
-        this.mPresenter.onEditCategory(id)
+        this.mPresenter.onEditCategory(id, "name", 60)
     }
 
     override fun onClickDeleteItem(id: String, name: String) {
