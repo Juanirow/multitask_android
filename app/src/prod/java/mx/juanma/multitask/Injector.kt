@@ -7,6 +7,7 @@ import mx.juanma.multitask.modules.Categories.CategoriesInteractor
 import mx.juanma.multitask.modules.Categories.ICategoriesInteractor
 import mx.juanma.multitask.modules.CreateAccount.CreateAccountInteractor
 import mx.juanma.multitask.modules.CreateAccount.ICreateAccountInteractor
+import mx.juanma.multitask.modules.EditCategory.EditCategoryInteractor
 import mx.juanma.multitask.modules.EditCategory.IEditCategoryInteractor
 import mx.juanma.multitask.modules.Login.ILoginInteractor
 import mx.juanma.multitask.modules.Login.LoginInteractor
@@ -49,5 +50,6 @@ object Injector: IProviders {
     }
 
     override fun editCategoriesInteractor(): IEditCategoryInteractor {
+        return EditCategoryInteractor()
     }
 }

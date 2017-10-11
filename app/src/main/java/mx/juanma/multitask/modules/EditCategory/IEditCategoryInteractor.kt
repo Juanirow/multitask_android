@@ -10,7 +10,7 @@ import mx.juanma.multitask.models.Category
  */
 interface IEditCategoryInteractor {
 
-    fun updateCategory(id: String, category: Category, capture: IEditCategoryInteractor.Callback?)
+    fun updateCategory(id: String, category: Category, callback: IEditCategoryInteractor.Callback?)
 
     interface Callback {
         fun onSessionExpired()
