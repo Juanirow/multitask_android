@@ -49,6 +49,7 @@ class EditCategoryPresenter(val mView: IEditCategoryView, val mInteractor: IEdit
     }
 
     override fun onInternalServerError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.mView.dismissProgressDialog()
+        this.mView.showInternalServerError()
     }
 }
