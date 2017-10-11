@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_edit_category.*
 import mx.juanma.multitask.Constants
+import mx.juanma.multitask.Injector
 import mx.juanma.multitask.R
 import mx.juanma.multitask.helpers.DialogCreator
 import mx.juanma.multitask.helpers.ViewHelper
@@ -47,6 +48,7 @@ class EditCategoryFragment: Fragment(), IEditCategoryView {
         this.defaultsTimeList = resources.getIntArray(R.array.time_templates_seconds)
         this.categoryId = this.activity.intent.getStringExtra(EXTRA_CATEGORY_ID)
         this.fabOk.setOnClickListener { this.mPresenter?.onClickSave() }
+        this.mPresenter = EditCategoryPresenter(this, Injector.editCategoriesInteractor())
     }
 
     /**
