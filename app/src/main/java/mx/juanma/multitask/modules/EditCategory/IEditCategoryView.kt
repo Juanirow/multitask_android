@@ -16,4 +16,5 @@ interface IEditCategoryView {
     fun closeActivityWithExpiredSessionCode()
     fun closeActivityWithOkResult()
     fun showInternalServerError()
+    fun getCategoryId(): String
 }

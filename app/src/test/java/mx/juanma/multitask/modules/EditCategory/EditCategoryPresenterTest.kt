@@ -4,7 +4,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
-import org.mockito.Matchers.any
+import org.mockito.Matchers.anyString
 
 import org.mockito.Mock
 import org.mockito.Mockito
@@ -17,6 +17,12 @@ import org.mockito.MockitoAnnotations
  * linanjm90@gmail.com
  */
 class EditCategoryPresenterTest {
+
+    private fun <T> any(): T {
+        Mockito.any<T>()
+        return uninitialized()
+    }
+    private fun <T> uninitialized(): T = null as T
 
     @Mock lateinit var mView: IEditCategoryView
     @Mock lateinit var mInteractor: IEditCategoryInteractor
@@ -46,13 +52,15 @@ class EditCategoryPresenterTest {
     fun shouldShowExpiredSession() {
         val captor = ArgumentCaptor.forClass(IEditCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getCategoryId()).thenReturn("asdas")
         Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(this.mView).getDefaultTime()
+        Mockito.verify(this.mView).getCategoryId()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
+        Mockito.verify(mInteractor).updateCategory(anyString(), any(), captor.capture())
 
         captor.value.onSessionExpired()
         Mockito.verify(mView).dismissProgressDialog()
@@ -69,13 +77,15 @@ class EditCategoryPresenterTest {
     fun shouldReturnOkResultAfterAddNewCategory() {
         val captor = ArgumentCaptor.forClass(IEditCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getCategoryId()).thenReturn("asdas")
         Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(this.mView).getDefaultTime()
+        Mockito.verify(this.mView).getCategoryId()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
+        Mockito.verify(mInteractor).updateCategory(any(), any(), captor.capture())
 
         captor.value.onCategoryUpdate()
         Mockito.verify(mView).dismissProgressDialog()
@@ -86,13 +96,15 @@ class EditCategoryPresenterTest {
     fun shouldShowInternalServerError() {
         val captor = ArgumentCaptor.forClass(IEditCategoryInteractor.Callback::class.java)
         Mockito.`when`(this.mView.getName()).thenReturn("Deporte")
+        Mockito.`when`(this.mView.getCategoryId()).thenReturn("asdas")
         Mockito.`when`(this.mView.getDefaultTime()).thenReturn(60)
 
         this.mPresenter.onClickSave()
         Mockito.verify(this.mView).getName()
         Mockito.verify(this.mView).getDefaultTime()
+        Mockito.verify(this.mView).getCategoryId()
         Mockito.verify(mView).showProgressView()
-        Mockito.verify(mInteractor).addNewCategory(any(), captor.capture())
+        Mockito.verify(mInteractor).updateCategory(any(), any(), captor.capture())
 
         captor.value.onInternalServerError()
         Mockito.verify(mView).dismissProgressDialog()
