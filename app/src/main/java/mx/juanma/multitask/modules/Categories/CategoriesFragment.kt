@@ -146,7 +146,7 @@ class CategoriesFragment: Fragment(), ICategoriesView, ICategoryItemActionListen
      */
 
     override fun onClickEditItem(id: String, name: String, seconds: Int) {
-        this.mPresenter.onEditCategory(id, "name", 60)
+        this.mPresenter.onEditCategory(id, name, seconds)
     }
 
     override fun onClickDeleteItem(id: String, name: String) {

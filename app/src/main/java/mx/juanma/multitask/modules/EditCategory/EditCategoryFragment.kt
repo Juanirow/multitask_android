@@ -52,6 +52,17 @@ class EditCategoryFragment: Fragment(), IEditCategoryView {
         this.categoryId = this.activity.intent.getStringExtra(EXTRA_CATEGORY_ID)
         this.fabOk.setOnClickListener { this.mPresenter?.onClickSave() }
         this.mPresenter = EditCategoryPresenter(this, Injector.editCategoriesInteractor())
+
+        val name = this.activity.intent.getStringExtra(EXTRA_CATEGORY_NAME)
+        val seconds = this.activity.intent.getIntExtra(EXTRA_CATEGORY_SECONDS, 60)
+        this.inputName.setText(name)
+        var valueIndex = 0
+        this.defaultsTimeList!!.forEachIndexed { index, i ->
+            if(seconds == i) {
+                valueIndex = index
+            }
+        }
+        this.spinnerTimeTemplate.setSelection(valueIndex)
     }
 
     /**
